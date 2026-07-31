@@ -32,6 +32,8 @@ export function HeroStage() {
         <div className="scan absolute inset-0" />
       </div>
 
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[55%] bg-gradient-to-t from-foreground via-foreground/90 to-transparent" />
+
       {/* floating XXX on stage */}
       <div className="relative z-10 flex h-[54vh] items-center justify-center px-5">
         <div className="flex items-center justify-center">
