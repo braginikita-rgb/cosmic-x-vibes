@@ -28,7 +28,7 @@ export function HeroStage() {
       </div>
 
       {/* white XXX mark from logo */}
-      <div className="relative z-10 flex h-[52vh] items-start justify-center px-5 pt-[10vh]">
+      <div className="relative z-10 flex h-[52vh] items-start justify-center px-5 pt-[14vh]">
         <img
           src={xxxWhite}
           alt="xXx"
