@@ -23,10 +23,10 @@ export function HeroStage() {
         preload="auto"
         disablePictureInPicture
         disableRemotePlayback
-        aria-label="Освещённая сцена с дымом"
-        width={1920}
-        height={1080}
-        className="absolute inset-0 size-full object-cover"
+        aria-label="Чёрно-белая нарезка кадров с концертов"
+        width={1080}
+        height={1920}
+        className="absolute inset-0 size-full object-cover contrast-125 grayscale"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/80" />
 
