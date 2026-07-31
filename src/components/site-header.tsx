@@ -26,6 +26,10 @@ export function SiteHeader() {
 
   const visible = !isHome || scrolled;
 
+  useEffect(() => {
+    if (!visible) setOpen(false);
+  }, [visible]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-700 ease-out ${
@@ -59,7 +63,7 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {open && (
+      {open && visible && (
         <nav className="mx-4 mt-2 flex flex-col rounded-2xl bg-background shadow-lg">
           {nav.map((item) => (
             <Link
