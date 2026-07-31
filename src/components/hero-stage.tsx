@@ -14,7 +14,7 @@ export function HeroStage() {
   return (
     <section className="relative isolate overflow-hidden bg-foreground text-background">
       {/* stage footage */}
-      <div className="absolute inset-x-0 top-0 h-[78vh] overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-[72vh] overflow-hidden">
         {shots.map((shot, i) => (
           <img
             key={shot.src}
@@ -27,7 +27,7 @@ export function HeroStage() {
             style={{ animationDelay: shot.delay }}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-transparent to-foreground" />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/45 via-foreground/25 to-foreground" />
         <div className="strobe absolute inset-0 bg-background" />
         <div className="scan absolute inset-0" />
       </div>
