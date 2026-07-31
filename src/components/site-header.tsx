@@ -26,6 +26,10 @@ export function SiteHeader() {
 
   const visible = !isHome || scrolled;
 
+  useEffect(() => {
+    if (!visible) setOpen(false);
+  }, [visible]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-700 ease-out ${
