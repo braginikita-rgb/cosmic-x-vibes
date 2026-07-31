@@ -100,7 +100,7 @@
 @utility label-tag {
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.28em;
   font-weight: 600;
 }
 
@@ -109,9 +109,9 @@
   color: var(--color-background);
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.22em;
   font-weight: 700;
-  padding: 0.35rem 1rem 0.35rem 1.35rem;
+  padding: 0.75rem 1.5rem;
   display: inline-block;
 }
 
