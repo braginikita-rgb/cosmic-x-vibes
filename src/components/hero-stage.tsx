@@ -30,31 +30,29 @@ export function HeroStage() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/80" />
 
-      {/* три икса по центру */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6">
-        <div className="flex w-[90vw] max-w-5xl">
+      {/* три икса, растянутые по всему экрану */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-2">
+        <div className="flex w-full items-end justify-between gap-1">
           {quickLinks.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="group flex flex-1 flex-col items-center overflow-hidden"
+              className="group flex flex-1 flex-col items-center"
               aria-label={item.label}
             >
-              <div className="relative w-full aspect-[459/768] overflow-hidden">
-                <img
-                  src={xxxWhite}
-                  alt="xXx"
-                  width={1376}
-                  height={768}
-                  className={`absolute inset-0 size-full object-cover opacity-60 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)] transition-opacity duration-300 group-hover:opacity-85 ${item.position}`}
-                />
-              </div>
-              <span className="mt-4 font-mono text-xs font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:text-sm">
+              <span
+                aria-hidden
+                className="block w-full text-center font-display leading-[0.7] text-background/60 transition-all duration-300 group-hover:text-background/90 text-[34vw] sm:text-[26vw] lg:text-[22vw] [transform:scaleY(1.6)] drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+              >
+                X
+              </span>
+              <span className="mt-[10vw] font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:mt-10 sm:text-sm">
                 {item.label}
               </span>
             </Link>
           ))}
         </div>
+
 
         <a href="#about" aria-label="Листать вниз" className="mt-8">
           <ChevronDown className="size-7 animate-bounce text-background/60" />
