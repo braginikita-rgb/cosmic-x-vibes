@@ -63,7 +63,7 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {open && (
+      {open && visible && (
         <nav className="mx-4 mt-2 flex flex-col rounded-2xl bg-background shadow-lg">
           {nav.map((item) => (
             <Link
