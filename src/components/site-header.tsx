@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
 
@@ -13,9 +13,27 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const visible = !isHome || scrolled;
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-700 ease-out ${
+        visible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-3 opacity-0"
+      }`}
+    >
       <div className="relative flex items-center justify-center rounded-b-[2rem] bg-background px-6 py-6 shadow-sm">
         <Link
           to="/"
