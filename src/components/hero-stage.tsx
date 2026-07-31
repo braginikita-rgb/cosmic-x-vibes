@@ -32,10 +32,10 @@ export function HeroStage() {
         <div className="scan absolute inset-0" />
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[55%] bg-gradient-to-t from-foreground via-foreground/90 to-transparent" />
+      
 
       {/* floating XXX on stage */}
-      <div className="relative z-10 flex h-[54vh] items-center justify-center px-5">
+      <div className="relative z-10 flex h-[52vh] pt-[8vh] items-center justify-center px-5">
         <div className="flex items-center justify-center">
           {[
             { c: "X", delay: "0s" },
@@ -57,7 +57,7 @@ export function HeroStage() {
       </div>
 
       {/* copy block */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-14 sm:pt-24">
+      <div className="relative z-10 mx-auto max-w-7xl bg-foreground px-6 pb-20 pt-14 sm:pt-24">
         <div className="flex items-center gap-5">
           <span className="label-tag whitespace-nowrap text-[11px] text-background/85">
             Live music. Real impact.
