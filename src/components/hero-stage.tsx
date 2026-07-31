@@ -1,18 +1,26 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import stageLoop from "@/assets/stage-loop.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
 
 export function HeroStage() {
   return (
     <section className="relative isolate overflow-hidden bg-foreground text-background">
-      {/* static stage photo */}
+      {/* stage footage: spotlights + haze */}
       <div className="absolute inset-x-0 top-0 h-[72vh] overflow-hidden">
-        <img
-          src={stageStatic}
-          alt="Тёмная сцена с прожекторами"
+        <video
+          src={stageLoop.url}
+          poster={stageStatic}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
+          aria-label="Освещённая сцена с дымом"
           width={1920}
           height={1080}
-          loading="eager"
           className="absolute inset-0 size-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/45 via-foreground/25 to-foreground" />
