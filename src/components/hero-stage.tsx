@@ -1,56 +1,35 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import concert1 from "@/assets/concert-1.jpg";
-import concert2 from "@/assets/concert-2.jpg";
-import concert3 from "@/assets/concert-3.jpg";
-
-const shots = [
-  { src: concert1, delay: "0s", alt: "Свет и толпа на концерте" },
-  { src: concert2, delay: "-6s", alt: "Лазеры над сценой" },
-  { src: concert3, delay: "-12s", alt: "Артист в контровом свете" },
-];
+import stageStatic from "@/assets/stage-static.jpg";
 
 export function HeroStage() {
   return (
     <section className="relative isolate overflow-hidden bg-foreground text-background">
-      {/* stage footage */}
+      {/* static stage photo */}
       <div className="absolute inset-x-0 top-0 h-[72vh] overflow-hidden">
-        {shots.map((shot, i) => (
-          <img
-            key={shot.src}
-            src={shot.src}
-            alt={shot.alt}
-            width={1920}
-            height={1088}
-            loading={i === 0 ? "eager" : "lazy"}
-            className="stage-fade absolute inset-0 size-full object-cover"
-            style={{ animationDelay: shot.delay }}
-          />
-        ))}
+        <img
+          src={stageStatic}
+          alt="Тёмная сцена с прожекторами"
+          width={1920}
+          height={1080}
+          loading="eager"
+          className="absolute inset-0 size-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/45 via-foreground/25 to-foreground" />
-        <div className="strobe absolute inset-0 bg-background" />
-        <div className="scan absolute inset-0" />
       </div>
 
-      
-
-      {/* floating XXX on stage */}
+      {/* static XXX on stage */}
       <div className="relative z-10 flex h-[52vh] pt-[8vh] items-center justify-center px-5">
         <div className="flex items-center justify-center">
-          {[
-            { c: "X", delay: "0s" },
-            { c: "X", delay: "-2s" },
-            { c: "X", delay: "-4s" },
-          ].map((l, i) => (
+          {["X", "X", "X"].map((c, i) => (
             <span
               key={i}
-              className="logo-mark float-x text-[26vw] leading-[0.8] text-accent sm:text-[15rem]"
+              className="logo-mark text-[26vw] leading-[0.8] text-accent sm:text-[15rem]"
               style={{
-                animationDelay: l.delay,
                 textShadow: "0 30px 80px oklch(0 0 0 / 55%)",
               }}
             >
-              {l.c}
+              {c}
             </span>
           ))}
         </div>
