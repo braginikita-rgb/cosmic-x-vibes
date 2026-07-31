@@ -32,7 +32,7 @@ export function HeroStage() {
 
       {/* три икса по центру */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6">
-        <div className="flex w-[90vw] max-w-5xl items-end">
+        <div className="flex w-[90vw] max-w-5xl">
           {quickLinks.map((item) => (
             <Link
               key={item.to}
@@ -40,13 +40,15 @@ export function HeroStage() {
               className="group flex flex-1 flex-col items-center overflow-hidden"
               aria-label={item.label}
             >
-              <img
-                src={xxxWhite}
-                alt="xXx"
-                width={1376}
-                height={768}
-                className={`w-[300%] max-w-none h-auto opacity-60 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)] transition-opacity duration-300 group-hover:opacity-85 ${item.position}`}
-              />
+              <div className="relative w-full aspect-[459/768] overflow-hidden">
+                <img
+                  src={xxxWhite}
+                  alt="xXx"
+                  width={1376}
+                  height={768}
+                  className={`absolute inset-0 size-full object-cover opacity-60 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)] transition-opacity duration-300 group-hover:opacity-85 ${item.position}`}
+                />
+              </div>
               <span className="mt-4 font-mono text-xs font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:text-sm">
                 {item.label}
               </span>
