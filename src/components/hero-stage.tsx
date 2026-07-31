@@ -30,23 +30,23 @@ export function HeroStage() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/80" />
 
-      {/* три икса, растянутые по всему экрану */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-2">
-        <div className="flex w-full items-end justify-between gap-1">
+      {/* три икса, растянутые вдоль всего экрана */}
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-4">
+        <div className="flex h-full w-full max-w-7xl items-stretch justify-between gap-3 py-8">
           {quickLinks.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="group flex flex-1 flex-col items-center"
+              className="group flex flex-1 flex-col items-center justify-between"
               aria-label={item.label}
             >
               <span
                 aria-hidden
-                className="block w-full text-center font-display leading-[0.7] text-background/60 transition-all duration-300 group-hover:text-background/90 text-[34vw] sm:text-[26vw] lg:text-[22vw] [transform:scaleY(1.6)] drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+                className="flex flex-1 items-center justify-center text-center font-display leading-none text-background/60 transition-all duration-300 group-hover:text-background/90 text-[24vh] sm:text-[26vh] md:text-[28vh] lg:text-[30vh] [transform:scaleY(1.85)] drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
               >
                 X
               </span>
-              <span className="mt-[10vw] font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:mt-10 sm:text-sm">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:text-xs md:text-sm">
                 {item.label}
               </span>
             </Link>
