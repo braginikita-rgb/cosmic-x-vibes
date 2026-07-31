@@ -2,13 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import stageLoop from "@/assets/concert-cut.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
-import xxxWhite from "@/assets/xxx-white.png";
 
 const quickLinks = [
-  { to: "/shop", label: "Shop", position: "object-left" as const },
-  { to: "/tickets", label: "Tickets", position: "object-center" as const },
-  { to: "/archive", label: "Archive", position: "object-right" as const },
+  { to: "/shop", label: "Shop" },
+  { to: "/tickets", label: "Tickets" },
+  { to: "/archive", label: "Archive" },
 ] as const;
+
 
 export function HeroStage() {
   return (
