@@ -1,44 +1,60 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { upcoming } from "@/data/shows";
 
+function statusClass(status: string) {
+  if (status === "Sold out") return "bg-muted text-muted-foreground";
+  if (status === "Мало билетов") return "bg-acid text-acid-foreground";
+  return "bg-accent text-accent-foreground";
+}
+
 export function Announcements() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-20">
+    <section className="mx-auto max-w-7xl px-5 py-20 sm:py-24">
       <SectionHeading tag="Анонсы" title="Ближайшие концерты">
-        <Link to="/tickets" className="label-tag text-[10px] hover:text-accent">
-          Все даты →
+        <Link
+          to="/tickets"
+          className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-accent"
+        >
+          Все даты <ArrowUpRight className="size-3.5" />
         </Link>
       </SectionHeading>
 
-      <ul>
+      <ul className="divide-y divide-border">
         {upcoming.map((show) => (
-          <li
-            key={show.id}
-            className="group grid grid-cols-2 items-center gap-4 border-b border-border py-6 transition-colors hover:bg-secondary md:grid-cols-[120px_1fr_1fr_140px_120px]"
-          >
-            <div className="logo-mark text-2xl">
-              {show.date}
-              <span className="label-tag ml-2 text-[10px] not-italic text-muted-foreground">
-                {show.day}
-              </span>
-            </div>
-            <h3 className="text-lg md:text-2xl">{show.title}</h3>
-            <p className="text-sm text-muted-foreground">
-              {show.city} · {show.venue}
-            </p>
-            <span
-              className={`label-tag w-fit px-2 py-1 text-[10px] ${
-                show.status === "Sold out"
-                  ? "bg-muted text-muted-foreground"
-                  : show.status === "Мало билетов"
-                    ? "bg-acid text-acid-foreground"
-                    : "bg-accent text-accent-foreground"
-              }`}
+          <li key={show.id}>
+            <Link
+              to="/tickets"
+              className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-2 py-6 transition-colors sm:grid-cols-[110px_1fr_200px_130px_auto] sm:gap-x-8"
             >
-              {show.status}
-            </span>
-            <span className="label-tag text-[10px]">{show.price}</span>
+              <div className="row-span-2 sm:row-span-1">
+                <span className="font-display text-2xl leading-none sm:text-3xl">
+                  {show.date}
+                </span>
+                <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                  {show.day}
+                </span>
+              </div>
+
+              <h3 className="text-lg transition-colors group-hover:text-accent sm:text-2xl">
+                {show.title}
+              </h3>
+
+              <p className="col-start-2 text-sm text-muted-foreground sm:col-start-3">
+                {show.city} · {show.venue}
+              </p>
+
+              <span
+                className={`w-fit px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] ${statusClass(show.status)}`}
+              >
+                {show.status}
+              </span>
+
+              <span className="row-start-1 justify-self-end font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground sm:row-start-auto">
+                {show.price}
+              </span>
+            </Link>
           </li>
         ))}
       </ul>

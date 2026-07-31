@@ -11,7 +11,7 @@ const shots = [
 
 export function HeroStage() {
   return (
-    <section className="relative isolate flex min-h-[88vh] items-center justify-center overflow-hidden bg-foreground">
+    <section className="relative isolate flex min-h-[82vh] items-end overflow-hidden bg-foreground">
       {shots.map((shot, i) => (
         <img
           key={shot.src}
@@ -26,55 +26,79 @@ export function HeroStage() {
       ))}
 
       {/* atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-foreground/70" />
-      <div className="strobe absolute inset-0 bg-white" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/45 to-foreground/30" />
+      <div className="strobe absolute inset-0 bg-background" />
       <div className="scan absolute inset-0" />
 
-      <div className="relative z-10 px-5 text-center">
-        <div className="flex items-end justify-center gap-2 sm:gap-4">
-          {[
-            { c: "x", size: "text-[22vw] sm:text-[15vw]", delay: "0s" },
-            { c: "X", size: "text-[34vw] sm:text-[23vw]", delay: "-2s" },
-            { c: "x", size: "text-[22vw] sm:text-[15vw]", delay: "-4s" },
-          ].map((l, i) => (
-            <span
-              key={i}
-              className={`logo-mark float-x leading-[0.8] text-background ${l.size}`}
-              style={{
-                animationDelay: l.delay,
-                textShadow: "0 30px 70px oklch(0 0 0 / 55%)",
-              }}
-            >
-              {l.c}
-            </span>
-          ))}
-        </div>
-
-        <div className="-mt-2 sm:-mt-4">
-          <span className="bar-label bg-background text-sm text-foreground sm:text-lg">
-            Sound
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-32">
+        <div className="flex flex-col items-center text-center">
+          <span className="inline-flex items-center gap-3 border border-background/30 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-background/80">
+            <span className="size-1.5 animate-pulse bg-acid" />
+            Сезон 2025 / 26
           </span>
+
+          <div className="mt-8 flex items-end justify-center gap-1 sm:gap-3">
+            {[
+              { c: "x", size: "text-[19vw] sm:text-[11rem]", delay: "0s" },
+              { c: "X", size: "text-[28vw] sm:text-[17rem]", delay: "-2s" },
+              { c: "x", size: "text-[19vw] sm:text-[11rem]", delay: "-4s" },
+            ].map((l, i) => (
+              <span
+                key={i}
+                className={`logo-mark float-x leading-[0.75] text-background ${l.size}`}
+                style={{
+                  animationDelay: l.delay,
+                  textShadow: "0 40px 90px oklch(0 0 0 / 60%)",
+                }}
+              >
+                {l.c}
+              </span>
+            ))}
+          </div>
+
+          <h2 className="mt-4 font-mono text-lg font-bold uppercase tracking-[0.6em] text-background sm:text-2xl">
+            Sound
+          </h2>
+
+          <p className="mt-7 max-w-lg text-sm leading-relaxed text-background/75 sm:text-base">
+            Концертная организация. Собираем сцены, свет и звук — от клубных
+            вечеров до больших арен.
+          </p>
+
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/tickets"
+              className="bg-accent px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-[0.25em] text-accent-foreground transition-colors hover:bg-background hover:text-foreground"
+            >
+              Билеты
+            </Link>
+            <Link
+              to="/archive"
+              className="border border-background/40 px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-[0.25em] text-background transition-colors hover:bg-background hover:text-foreground"
+            >
+              Архив шоу
+            </Link>
+          </div>
         </div>
 
-        <p className="mx-auto mt-8 max-w-xl text-sm text-background/80 sm:text-base">
-          Концертная организация. Мы собираем сцены, свет и звук — от клубных
-          вечеров до больших арен.
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            to="/tickets"
-            className="bar-label bg-accent text-xs text-accent-foreground transition-transform hover:-translate-y-0.5"
-          >
-            Билеты
-          </Link>
-          <Link
-            to="/archive"
-            className="bar-label bg-acid text-xs text-acid-foreground transition-transform hover:-translate-y-0.5"
-          >
-            Архив
-          </Link>
-        </div>
+        {/* stats strip */}
+        <dl className="mt-16 grid grid-cols-2 gap-y-8 border-t border-background/20 pt-8 sm:grid-cols-4">
+          {[
+            ["120+", "шоу проведено"],
+            ["18", "городов"],
+            ["250k", "зрителей"],
+            ["9", "лет на сцене"],
+          ].map(([value, label]) => (
+            <div key={label} className="text-center">
+              <dt className="font-display text-2xl text-background sm:text-4xl">
+                {value}
+              </dt>
+              <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
+                {label}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

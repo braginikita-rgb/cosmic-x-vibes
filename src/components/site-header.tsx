@@ -7,48 +7,60 @@ const nav = [
   { to: "/", label: "Главная" },
   { to: "/tickets", label: "Билеты" },
   { to: "/shop", label: "Магазин" },
-  { to: "/contacts", label: "Контакты" },
   { to: "/archive", label: "Архив" },
+  { to: "/contacts", label: "Контакты" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-foreground bg-background">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logoAsset.url} alt="xXx Sound" className="h-9 w-auto" width={120} height={36} />
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+      {/* top bar: centered logo */}
+      <div className="relative mx-auto flex max-w-7xl items-center justify-center px-5 py-5">
+        <Link to="/" onClick={() => setOpen(false)} aria-label="xXx Sound — на главную">
+          <img
+            src={logoAsset.url}
+            alt="xXx Sound"
+            className="h-11 w-auto sm:h-14"
+            width={200}
+            height={56}
+          />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className="label-tag text-[11px] text-muted-foreground transition-colors hover:text-accent"
-              activeProps={{ className: "label-tag text-[11px] text-foreground" }}
-              activeOptions={{ exact: item.to === "/" }}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            to="/tickets"
-            className="bar-label bg-accent text-[11px] text-accent-foreground transition-transform hover:-translate-y-0.5"
-          >
-            Купить
-          </Link>
-        </nav>
+        <Link
+          to="/tickets"
+          className="absolute right-5 hidden bg-accent px-5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-accent-foreground transition-colors hover:bg-foreground hover:text-background md:inline-block"
+        >
+          Купить билет
+        </Link>
 
         <button
-          className="md:hidden"
+          className="absolute right-5 md:hidden"
           aria-label="Меню"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
         </button>
       </div>
+
+      {/* nav row */}
+      <nav className="hidden justify-center gap-10 border-t border-border py-3 md:flex">
+        {nav.map((item) => (
+          <Link
+            key={item.to}
+            to={item.to}
+            className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-accent"
+            activeProps={{
+              className:
+                "font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground",
+            }}
+            activeOptions={{ exact: item.to === "/" }}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
 
       {open && (
         <nav className="flex flex-col border-t border-border md:hidden">
@@ -57,11 +69,18 @@ export function SiteHeader() {
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="label-tag border-b border-border px-5 py-4 text-[11px]"
+              className="border-b border-border px-5 py-4 font-mono text-[11px] font-semibold uppercase tracking-[0.22em]"
             >
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/tickets"
+            onClick={() => setOpen(false)}
+            className="bg-accent px-5 py-4 text-center font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-accent-foreground"
+          >
+            Купить билет
+          </Link>
         </nav>
       )}
     </header>
