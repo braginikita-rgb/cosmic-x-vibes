@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
-import stageLoop from "@/assets/stage-loop.mp4.asset.json";
+import stageLoop from "@/assets/concert-cut.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
 import xxxWhite from "@/assets/xxx-white.png";
 
