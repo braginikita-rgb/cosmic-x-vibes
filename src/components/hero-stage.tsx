@@ -34,7 +34,7 @@ export function HeroStage() {
           alt="xXx"
           width={800}
           height={300}
-          className="w-[80vw] max-w-3xl opacity-75 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+          className="w-[60vw] max-w-2xl opacity-75 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
         />
       </div>
 
