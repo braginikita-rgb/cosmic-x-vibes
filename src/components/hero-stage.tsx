@@ -32,29 +32,29 @@ export function HeroStage() {
 
       {/* три икса по центру */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6">
-        <img
-          src={xxxWhite}
-          alt="xXx"
-          width={800}
-          height={300}
-          className="w-[72vw] max-w-xl opacity-60 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
-        />
-      </div>
-
-      {/* нижние ссылки */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center gap-6 pb-10">
-        <nav className="flex items-center gap-8 sm:gap-14">
+        <div className="flex w-[90vw] max-w-5xl items-end">
           {quickLinks.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-background/80 transition-colors hover:text-accent sm:text-sm"
+              className="group flex flex-1 flex-col items-center overflow-hidden"
+              aria-label={item.label}
             >
-              {item.label}
+              <img
+                src={xxxWhite}
+                alt="xXx"
+                width={1376}
+                height={768}
+                className={`w-[300%] max-w-none h-auto opacity-60 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)] transition-opacity duration-300 group-hover:opacity-85 ${item.position}`}
+              />
+              <span className="mt-4 font-mono text-xs font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:text-sm">
+                {item.label}
+              </span>
             </Link>
           ))}
-        </nav>
-        <a href="#about" aria-label="Листать вниз">
+        </div>
+
+        <a href="#about" aria-label="Листать вниз" className="mt-8">
           <ChevronDown className="size-7 animate-bounce text-background/60" />
         </a>
       </div>
