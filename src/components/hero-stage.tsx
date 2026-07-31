@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import stageLoop from "@/assets/stage-loop.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
+import xxxWhite from "@/assets/xxx-white.png";
 
 export function HeroStage() {
   return (
@@ -26,21 +27,15 @@ export function HeroStage() {
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/45 via-foreground/25 to-foreground" />
       </div>
 
-      {/* static XXX on stage */}
+      {/* white XXX mark from logo */}
       <div className="relative z-10 flex h-[52vh] pt-[8vh] items-center justify-center px-5">
-        <div className="flex items-center justify-center">
-          {["X", "X", "X"].map((c, i) => (
-            <span
-              key={i}
-              className="logo-mark text-[26vw] leading-[0.8] text-accent sm:text-[15rem]"
-              style={{
-                textShadow: "0 30px 80px oklch(0 0 0 / 55%)",
-              }}
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+        <img
+          src={xxxWhite}
+          alt="xXx"
+          width={800}
+          height={300}
+          className="w-[80vw] max-w-3xl drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+        />
       </div>
 
       {/* copy block */}
