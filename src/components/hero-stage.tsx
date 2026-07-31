@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import concert1 from "@/assets/concert-1.jpg";
 import concert2 from "@/assets/concert-2.jpg";
 import concert3 from "@/assets/concert-3.jpg";
@@ -11,94 +12,84 @@ const shots = [
 
 export function HeroStage() {
   return (
-    <section className="relative isolate flex min-h-[82vh] items-end overflow-hidden bg-foreground">
-      {shots.map((shot, i) => (
-        <img
-          key={shot.src}
-          src={shot.src}
-          alt={shot.alt}
-          width={1920}
-          height={1088}
-          loading={i === 0 ? "eager" : "lazy"}
-          className="stage-fade absolute inset-0 size-full object-cover"
-          style={{ animationDelay: shot.delay }}
-        />
-      ))}
+    <section className="relative isolate overflow-hidden bg-foreground text-background">
+      {/* stage footage */}
+      <div className="absolute inset-x-0 top-0 h-[78vh] overflow-hidden">
+        {shots.map((shot, i) => (
+          <img
+            key={shot.src}
+            src={shot.src}
+            alt={shot.alt}
+            width={1920}
+            height={1088}
+            loading={i === 0 ? "eager" : "lazy"}
+            className="stage-fade absolute inset-0 size-full object-cover"
+            style={{ animationDelay: shot.delay }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-transparent to-foreground" />
+        <div className="strobe absolute inset-0 bg-background" />
+        <div className="scan absolute inset-0" />
+      </div>
 
-      {/* atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/45 to-foreground/30" />
-      <div className="strobe absolute inset-0 bg-background" />
-      <div className="scan absolute inset-0" />
+      {/* floating XXX on stage */}
+      <div className="relative z-10 flex h-[54vh] items-center justify-center px-5">
+        <div className="flex items-center justify-center">
+          {[
+            { c: "X", delay: "0s" },
+            { c: "X", delay: "-2s" },
+            { c: "X", delay: "-4s" },
+          ].map((l, i) => (
+            <span
+              key={i}
+              className="logo-mark float-x text-[26vw] leading-[0.8] text-accent sm:text-[15rem]"
+              style={{
+                animationDelay: l.delay,
+                textShadow: "0 30px 80px oklch(0 0 0 / 55%)",
+              }}
+            >
+              {l.c}
+            </span>
+          ))}
+        </div>
+      </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-32">
-        <div className="flex flex-col items-center text-center">
-          <span className="inline-flex items-center gap-3 border border-background/30 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-background/80">
-            <span className="size-1.5 animate-pulse bg-acid" />
-            Сезон 2025 / 26
+      {/* copy block */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-14 sm:pt-24">
+        <div className="flex items-center gap-5">
+          <span className="label-tag whitespace-nowrap text-[11px] text-background/85">
+            Live music. Real impact.
           </span>
-
-          <div className="mt-8 flex items-end justify-center gap-1 sm:gap-3">
-            {[
-              { c: "x", size: "text-[19vw] sm:text-[11rem]", delay: "0s" },
-              { c: "X", size: "text-[28vw] sm:text-[17rem]", delay: "-2s" },
-              { c: "x", size: "text-[19vw] sm:text-[11rem]", delay: "-4s" },
-            ].map((l, i) => (
-              <span
-                key={i}
-                className={`logo-mark float-x leading-[0.75] text-background ${l.size}`}
-                style={{
-                  animationDelay: l.delay,
-                  textShadow: "0 40px 90px oklch(0 0 0 / 60%)",
-                }}
-              >
-                {l.c}
-              </span>
-            ))}
-          </div>
-
-          <h2 className="mt-4 font-mono text-lg font-bold uppercase tracking-[0.6em] text-background sm:text-2xl">
-            Sound
-          </h2>
-
-          <p className="mt-7 max-w-lg text-sm leading-relaxed text-background/75 sm:text-base">
-            Концертная организация. Собираем сцены, свет и звук — от клубных
-            вечеров до больших арен.
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to="/tickets"
-              className="bg-accent px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-[0.25em] text-accent-foreground transition-colors hover:bg-background hover:text-foreground"
-            >
-              Билеты
-            </Link>
-            <Link
-              to="/archive"
-              className="border border-background/40 px-7 py-3.5 font-mono text-xs font-bold uppercase tracking-[0.25em] text-background transition-colors hover:bg-background hover:text-foreground"
-            >
-              Архив шоу
-            </Link>
-          </div>
+          <span className="h-px flex-1 bg-background/30" />
         </div>
 
-        {/* stats strip */}
-        <dl className="mt-16 grid grid-cols-2 gap-y-8 border-t border-background/20 pt-8 sm:grid-cols-4">
-          {[
-            ["120+", "шоу проведено"],
-            ["18", "городов"],
-            ["250k", "зрителей"],
-            ["9", "лет на сцене"],
-          ].map(([value, label]) => (
-            <div key={label} className="text-center">
-              <dt className="font-display text-2xl text-background sm:text-4xl">
-                {value}
-              </dt>
-              <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
-                {label}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <h1 className="mt-6 font-mono text-[13vw] font-bold uppercase leading-[0.92] tracking-tight sm:text-7xl lg:text-8xl">
+          Мы создаём момент.
+          <br />
+          Ты помнишь навсегда.
+        </h1>
+
+        <p className="mt-6 max-w-md text-base leading-relaxed text-background/70">
+          xXx Sound — концертная организация, собранная ради музыки и людей.
+        </p>
+
+        <div className="mt-10 flex flex-wrap items-center gap-8">
+          <Link
+            to="/tickets"
+            className="group inline-flex items-center gap-6 border border-background/50 px-7 py-4 font-mono text-xs font-bold uppercase tracking-[0.25em] transition-colors hover:bg-background hover:text-foreground"
+          >
+            Ближайшие шоу
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link
+            to="/contacts"
+            className="border-b border-background/70 pb-1 font-mono text-xs font-bold uppercase tracking-[0.25em] transition-colors hover:text-accent"
+          >
+            О нас
+          </Link>
+        </div>
+
+        <ChevronDown className="mx-auto mt-16 size-8 animate-bounce text-background/60" />
       </div>
     </section>
   );
