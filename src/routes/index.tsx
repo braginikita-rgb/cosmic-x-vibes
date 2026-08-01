@@ -30,7 +30,6 @@ function Index() {
     <>
       <h1 className="sr-only">xXx Sound — концертная организация</h1>
       <HeroStage />
-      <AboutUs />
       <ArtistPoster />
       <Announcements />
       <MerchTeaser />
