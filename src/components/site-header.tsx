@@ -70,6 +70,17 @@ export function SiteHeader() {
         </Link>
 
         <button
+          className="absolute left-6 flex items-center gap-1.5 text-foreground transition-colors hover:text-accent"
+          aria-label={lang === "ru" ? "Switch to English" : "Переключить на русский"}
+          onClick={toggleLang}
+        >
+          <Globe className="size-7" />
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.2em]">
+            {lang === "ru" ? "RU" : "EN"}
+          </span>
+        </button>
+
+        <button
           className="absolute right-6 text-foreground"
           aria-label="Меню"
           aria-expanded={open}
@@ -77,6 +88,7 @@ export function SiteHeader() {
         >
           {open ? <X className="size-8" /> : <Menu className="size-8" />}
         </button>
+
       </div>
 
       {open && visible && (
@@ -90,7 +102,7 @@ export function SiteHeader() {
               activeProps={{ className: "text-accent" }}
               activeOptions={{ exact: item.to === "/" }}
             >
-              {item.label}
+              {item[lang]}
             </Link>
           ))}
           <Link
@@ -98,8 +110,9 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
             className="rounded-b-2xl bg-accent px-6 py-4 text-center font-mono text-sm font-bold uppercase tracking-[0.22em] text-accent-foreground"
           >
-            Купить билет
+            {lang === "ru" ? "Купить билет" : "Buy tickets"}
           </Link>
+
         </nav>
       )}
     </header>
