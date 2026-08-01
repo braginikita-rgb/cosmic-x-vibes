@@ -2,8 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import artistPoster from "@/assets/artist-poster.jpg";
 import { upcoming } from "@/data/shows";
+import { useDataText, useI18n } from "@/lib/i18n";
 
 export function ArtistPoster() {
+  const { t } = useI18n();
+  const d = useDataText();
+
   return (
     <section
       id="tour"
@@ -13,7 +17,7 @@ export function ArtistPoster() {
         <figure className="relative">
           <img
             src={artistPoster}
-            alt="Артист на сцене"
+            alt={t("poster.alt")}
             width={912}
             height={1200}
             loading="lazy"
@@ -25,9 +29,9 @@ export function ArtistPoster() {
         </figure>
 
         <div>
-          <span className="label-tag text-[11px] text-accent">Афиша</span>
+          <span className="label-tag text-[11px] text-accent">{t("poster.tag")}</span>
           <h2 className="mt-5 font-mono text-4xl font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl">
-            Города и даты
+            {t("poster.title")}
           </h2>
 
           <ul className="mt-10 divide-y divide-background/20 border-y border-background/20">
@@ -37,7 +41,7 @@ export function ArtistPoster() {
                 className="flex items-baseline justify-between gap-4 py-5"
               >
                 <div>
-                  <p className="text-lg sm:text-xl">{show.city}</p>
+                  <p className="text-lg sm:text-xl">{d.city(show.city)}</p>
                   <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
                     {show.venue}
                   </p>
@@ -53,7 +57,7 @@ export function ArtistPoster() {
             to="/tickets"
             className="group mt-10 inline-flex items-center gap-6 bg-accent px-8 py-4 font-mono text-xs font-bold uppercase tracking-[0.28em] text-accent-foreground transition-opacity hover:opacity-90"
           >
-            Купить билеты
+            {t("poster.buy")}
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
