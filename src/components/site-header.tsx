@@ -1,21 +1,29 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Globe, Menu, X } from "lucide-react";
 import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
 
 const nav = [
-  { to: "/", label: "Главная" },
-  { to: "/tickets", label: "Билеты" },
-  { to: "/shop", label: "Магазин" },
-  { to: "/archive", label: "Архив" },
-  { to: "/contacts", label: "Контакты" },
+  { to: "/", ru: "Главная", en: "Home" },
+  { to: "/tickets", ru: "Билеты", en: "Tickets" },
+  { to: "/shop", ru: "Магазин", en: "Shop" },
+  { to: "/archive", ru: "Архив", en: "Archive" },
+  { to: "/contacts", ru: "Контакты", en: "Contacts" },
 ] as const;
+
+type Lang = "ru" | "en";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [lang, setLang] = useState<Lang>("ru");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isHome = pathname === "/";
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem("xxx-lang");
+    if (stored === "ru" || stored === "en") setLang(stored);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -29,6 +37,14 @@ export function SiteHeader() {
   useEffect(() => {
     if (!visible) setOpen(false);
   }, [visible]);
+
+  const toggleLang = () => {
+    const next: Lang = lang === "ru" ? "en" : "ru";
+    setLang(next);
+    window.localStorage.setItem("xxx-lang", next);
+    document.documentElement.lang = next;
+  };
+
 
   return (
     <header
