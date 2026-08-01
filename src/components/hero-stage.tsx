@@ -2,13 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import stageLoop from "@/assets/concert-cut.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
+import xxxLogo from "@/assets/xxx-white.png";
 
 const quickLinks = [
   { to: "/shop", label: "Shop" },
   { to: "/tickets", label: "Tickets" },
   { to: "/archive", label: "Archive" },
 ] as const;
-
 
 export function HeroStage() {
   return (
@@ -30,27 +30,25 @@ export function HeroStage() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/80" />
 
-      {/* три икса, растянутые вверх на всю высоту */}
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-2 py-6 sm:px-4 sm:py-8">
-        <div className="flex flex-1 w-full items-stretch justify-center gap-0">
-          {quickLinks.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className="group flex flex-1 flex-col items-center justify-end"
-              aria-label={item.label}
-            >
-              <span
-                aria-hidden
-                className="flex items-center justify-center text-center font-display leading-none text-background/60 transition-all duration-300 group-hover:text-background/90 text-[10vh] sm:text-[12vh] md:text-[14vh] lg:text-[16vh] scale-y-[8.5] scale-x-[2.4] sm:scale-y-[7] sm:scale-x-[3.5] md:scale-y-[6] md:scale-x-[5] lg:scale-y-[5] lg:scale-x-[6.5] origin-bottom drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+      {/* классический логотип по центру */}
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-4 py-6 sm:px-6 sm:py-8">
+        <div className="flex flex-1 flex-col items-center justify-center gap-8">
+          <img
+            src={xxxLogo}
+            alt="xXx"
+            className="w-[72vw] max-w-2xl opacity-75 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+          />
+          <nav className="flex items-center gap-6 sm:gap-10">
+            {quickLinks.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-background/80 transition-colors hover:text-accent sm:text-sm"
               >
-                X
-              </span>
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-background/80 transition-colors group-hover:text-accent sm:text-xs md:text-sm">
                 {item.label}
-              </span>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         <a href="#about" aria-label="Листать вниз" className="mt-4">
