@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
+import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
+
 
 export const Route = createFileRoute("/shop")({
   head: () => ({
