@@ -32,17 +32,17 @@ export function HeroStage() {
 
       {/* три икса, растянутые вверх на всю высоту */}
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-2 py-6 sm:px-4 sm:py-8">
-        <div className="flex flex-1 w-full items-stretch justify-between gap-2 sm:gap-3">
+        <div className="flex flex-1 w-full items-stretch justify-center gap-0">
           {quickLinks.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="group flex flex-1 flex-col items-center justify-end overflow-hidden"
+              className="group flex flex-1 flex-col items-center justify-end"
               aria-label={item.label}
             >
               <span
                 aria-hidden
-                className="flex items-center justify-center text-center font-display leading-none text-background/60 transition-all duration-300 group-hover:text-background/90 text-[10vh] sm:text-[12vh] md:text-[14vh] lg:text-[16vh] scale-y-[8.5] scale-x-[1.25] sm:scale-y-[7] sm:scale-x-[1.35] md:scale-y-[6] md:scale-x-[1.45] lg:scale-y-[5] lg:scale-x-[1.55] origin-bottom drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+                className="flex items-center justify-center text-center font-display leading-none text-background/60 transition-all duration-300 group-hover:text-background/90 text-[10vh] sm:text-[12vh] md:text-[14vh] lg:text-[16vh] scale-y-[8.5] scale-x-[2.4] sm:scale-y-[7] sm:scale-x-[3.5] md:scale-y-[6] md:scale-x-[5] lg:scale-y-[5] lg:scale-x-[6.5] origin-bottom drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
               >
                 X
               </span>
