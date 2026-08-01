@@ -31,9 +31,6 @@ function Shop() {
       />
       <h1 className="mt-6 text-4xl text-accent sm:text-6xl">{t("shop.title")}</h1>
       <p className="mt-6 max-w-md text-muted-foreground">{t("shop.text")}</p>
-      <span className="bar-label mt-8 bg-acid text-[10px] text-acid-foreground">
-        {t("shop.soon")}
-      </span>
     </div>
   );
 }
