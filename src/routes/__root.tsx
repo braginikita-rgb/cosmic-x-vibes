@@ -133,13 +133,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader />
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <main className={isHome ? undefined : "pt-28"}>
-        <Outlet />
-      </main>
-      <SiteFooter />
+      <LanguageProvider>
+        <SiteHeader />
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <main className={isHome ? undefined : "pt-28"}>
+          <Outlet />
+        </main>
+        <SiteFooter />
+      </LanguageProvider>
     </QueryClientProvider>
   );
+
 }
 
