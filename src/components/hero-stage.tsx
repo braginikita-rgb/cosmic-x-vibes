@@ -42,7 +42,7 @@ export function HeroStage() {
             >
               <span
                 aria-hidden
-                className="flex items-center justify-center text-center font-display leading-none text-background/60 transition-all duration-300 group-hover:text-background/90 text-[10vh] sm:text-[12vh] md:text-[14vh] lg:text-[16vh] scale-y-[8.5] sm:scale-y-[7] md:scale-y-[6] lg:scale-y-[5] origin-bottom drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+                className="flex items-center justify-center text-center font-display leading-none text-background/60 transition-all duration-300 group-hover:text-background/90 text-[10vh] sm:text-[12vh] md:text-[14vh] lg:text-[16vh] scale-y-[8.5] scale-x-[1.25] sm:scale-y-[7] sm:scale-x-[1.35] md:scale-y-[6] md:scale-x-[1.45] lg:scale-y-[5] lg:scale-x-[1.55] origin-bottom drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
               >
                 X
               </span>
