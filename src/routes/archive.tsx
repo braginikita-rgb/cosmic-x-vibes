@@ -3,6 +3,7 @@ import { archive } from "@/data/shows";
 import concert1 from "@/assets/concert-1.jpg";
 import concert2 from "@/assets/concert-2.jpg";
 import concert3 from "@/assets/concert-3.jpg";
+import { useDataText, useI18n } from "@/lib/i18n";
 
 const covers = [concert1, concert2, concert3];
 
@@ -25,17 +26,20 @@ export const Route = createFileRoute("/archive")({
 });
 
 function Archive() {
+  const { t } = useI18n();
+  const d = useDataText();
+
   return (
     <div className="mx-auto max-w-7xl px-5 py-20">
-      <p className="label-tag text-[10px] text-accent">История</p>
-      <h1 className="mt-2 text-4xl sm:text-6xl">Архив</h1>
+      <p className="label-tag text-[10px] text-accent">{t("archive.tag")}</p>
+      <h1 className="mt-2 text-4xl sm:text-6xl">{t("archive.title")}</h1>
 
       <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {archive.map((event, i) => (
           <article key={event.title} className="border border-foreground">
             <img
               src={covers[i % covers.length]}
-              alt={`${event.title}, ${event.city}`}
+              alt={`${event.title}, ${d.city(event.city)}`}
               width={1920}
               height={1088}
               loading="lazy"
@@ -45,11 +49,11 @@ function Archive() {
               <div className="flex items-center justify-between">
                 <span className="label-tag text-[10px] text-accent">{event.year}</span>
                 <span className="label-tag text-[10px] text-muted-foreground">
-                  {event.crowd} чел.
+                  {event.crowd} {t("archive.people")}
                 </span>
               </div>
               <h2 className="mt-3 text-xl">{event.title}</h2>
-              <p className="mt-1 text-sm text-muted-foreground">{event.city}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{d.city(event.city)}</p>
             </div>
           </article>
         ))}

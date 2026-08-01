@@ -1,24 +1,27 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
+import { useI18n, type TKey } from "@/lib/i18n";
 
 const items = [
-  { name: "Tee «xXx»", type: "Футболка" },
-  { name: "Hoodie Stage", type: "Худи" },
-  { name: "Cap Sound", type: "Кепка" },
-  { name: "Tote Strobe", type: "Шоппер" },
-];
+  { name: "Tee «xXx»", typeKey: "merch.tee" },
+  { name: "Hoodie Stage", typeKey: "merch.hoodie" },
+  { name: "Cap Sound", typeKey: "merch.cap" },
+  { name: "Tote Strobe", typeKey: "merch.tote" },
+] as const satisfies ReadonlyArray<{ name: string; typeKey: TKey }>;
 
 export function MerchTeaser() {
+  const { t } = useI18n();
+
   return (
     <section className="border-y border-border bg-card">
       <div className="mx-auto max-w-7xl px-5 py-20 sm:py-24">
-        <SectionHeading tag="Мерч" title="Магазин">
+        <SectionHeading tag={t("merch.tag")} title={t("merch.title")}>
           <Link
             to="/shop"
             className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-accent"
           >
-            В магазин <ArrowUpRight className="size-3.5" />
+            {t("merch.toShop")} <ArrowUpRight className="size-3.5" />
           </Link>
         </SectionHeading>
 
@@ -43,7 +46,7 @@ export function MerchTeaser() {
               <div className="flex items-center justify-between p-4">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                    {item.type}
+                    {t(item.typeKey)}
                   </p>
                   <h3 className="mt-1.5 text-base">{item.name}</h3>
                 </div>

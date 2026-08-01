@@ -1,5 +1,6 @@
 import { Instagram, Youtube, Send, Music2, ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
+import { useI18n } from "@/lib/i18n";
 
 const links = [
   { label: "Telegram", handle: "@xxxsound", href: "https://t.me/", Icon: Send },
@@ -9,9 +10,11 @@ const links = [
 ];
 
 export function Socials() {
+  const { t } = useI18n();
+
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 sm:py-24">
-      <SectionHeading tag="Соцсети" title="Мы онлайн" />
+      <SectionHeading tag={t("social.tag")} title={t("social.title")} />
       <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
         {links.map(({ label, handle, href, Icon }) => (
           <a

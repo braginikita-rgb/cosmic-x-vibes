@@ -2,28 +2,22 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
 import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
+import { useI18n, type TKey } from "@/lib/i18n";
 
 const nav = [
-  { to: "/", ru: "Главная", en: "Home" },
-  { to: "/tickets", ru: "Билеты", en: "Tickets" },
-  { to: "/shop", ru: "Магазин", en: "Shop" },
-  { to: "/archive", ru: "Архив", en: "Archive" },
-  { to: "/contacts", ru: "Контакты", en: "Contacts" },
-] as const;
-
-type Lang = "ru" | "en";
+  { to: "/", key: "nav.home" },
+  { to: "/tickets", key: "nav.tickets" },
+  { to: "/shop", key: "nav.shop" },
+  { to: "/archive", key: "nav.archive" },
+  { to: "/contacts", key: "nav.contacts" },
+] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [lang, setLang] = useState<Lang>("ru");
+  const { lang, toggleLang, t } = useI18n();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isHome = pathname === "/";
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem("xxx-lang");
-    if (stored === "ru" || stored === "en") setLang(stored);
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -38,14 +32,6 @@ export function SiteHeader() {
     if (!visible) setOpen(false);
   }, [visible]);
 
-  const toggleLang = () => {
-    const next: Lang = lang === "ru" ? "en" : "ru";
-    setLang(next);
-    window.localStorage.setItem("xxx-lang", next);
-    document.documentElement.lang = next;
-  };
-
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-700 ease-out ${
@@ -55,11 +41,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="relative flex items-center justify-center rounded-b-[2rem] bg-background px-6 py-6 shadow-sm">
-        <Link
-          to="/"
-          onClick={() => setOpen(false)}
-          aria-label="xXx Sound — на главную"
-        >
+        <Link to="/" onClick={() => setOpen(false)} aria-label={t("nav.home.aria")}>
           <img
             src={logoAsset.url}
             alt="xXx Sound"
@@ -82,13 +64,12 @@ export function SiteHeader() {
 
         <button
           className="absolute right-6 text-foreground"
-          aria-label="Меню"
+          aria-label={t("nav.menu")}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-8" /> : <Menu className="size-8" />}
         </button>
-
       </div>
 
       {open && visible && (
@@ -102,7 +83,7 @@ export function SiteHeader() {
               activeProps={{ className: "text-accent" }}
               activeOptions={{ exact: item.to === "/" }}
             >
-              {item[lang]}
+              {t(item.key)}
             </Link>
           ))}
           <Link
@@ -110,9 +91,8 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
             className="rounded-b-2xl bg-accent px-6 py-4 text-center font-mono text-sm font-bold uppercase tracking-[0.22em] text-accent-foreground"
           >
-            {lang === "ru" ? "Купить билет" : "Buy tickets"}
+            {t("nav.buyTicket")}
           </Link>
-
         </nav>
       )}
     </header>
