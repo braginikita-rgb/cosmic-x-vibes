@@ -53,10 +53,6 @@ export function HeroStage() {
             ))}
           </nav>
         </div>
-
-        <a href="#about" aria-label={t("hero.scroll")} className="mt-4">
-          <ChevronDown className="size-7 animate-bounce text-background/60" />
-        </a>
       </div>
     </section>
   );
