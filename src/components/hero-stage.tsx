@@ -3,14 +3,17 @@ import { ChevronDown } from "lucide-react";
 import stageLoop from "@/assets/concert-cut.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
 import xxxLogo from "@/assets/xxx-white.png";
+import { useI18n, type TKey } from "@/lib/i18n";
 
 const quickLinks = [
-  { to: "/shop", label: "Shop" },
-  { to: "/tickets", label: "Tickets" },
-  { to: "/archive", label: "Archive" },
-] as const;
+  { to: "/shop", key: "nav.shop" },
+  { to: "/tickets", key: "nav.tickets" },
+  { to: "/archive", key: "nav.archive" },
+] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
 export function HeroStage() {
+  const { t } = useI18n();
+
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-foreground text-background">
       <video
@@ -23,7 +26,7 @@ export function HeroStage() {
         preload="auto"
         disablePictureInPicture
         disableRemotePlayback
-        aria-label="Чёрно-белая нарезка кадров с концертов"
+        aria-label={t("hero.videoAlt")}
         width={1080}
         height={1920}
         className="absolute inset-0 size-full object-cover contrast-125 grayscale"
@@ -45,13 +48,13 @@ export function HeroStage() {
                 to={item.to}
                 className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-background/80 transition-colors hover:text-accent sm:text-sm"
               >
-                {item.label}
+                {t(item.key)}
               </Link>
             ))}
           </nav>
         </div>
 
-        <a href="#about" aria-label="Листать вниз" className="mt-4">
+        <a href="#about" aria-label={t("hero.scroll")} className="mt-4">
           <ChevronDown className="size-7 animate-bounce text-background/60" />
         </a>
       </div>
