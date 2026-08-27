@@ -52,11 +52,3 @@ export const upcoming: Show[] = [
   },
 ];
 
-export const archive = [
-  { year: "2025", title: "Neon Rave Arena", city: "Москва", crowd: "12 000" },
-  { year: "2025", title: "Distortion Fest", city: "Сочи", crowd: "8 500" },
-  { year: "2024", title: "Loud Room vol.3", city: "Санкт-Петербург", crowd: "5 000" },
-  { year: "2024", title: "Winter Signal", city: "Новосибирск", crowd: "4 200" },
-  { year: "2023", title: "First Light", city: "Казань", crowd: "3 000" },
-  { year: "2023", title: "xXx Sound Launch", city: "Москва", crowd: "1 800" },
-];
