@@ -15,7 +15,7 @@ const dict = {
     "nav.home": "Главная",
     "nav.tickets": "Билеты",
     "nav.shop": "Магазин",
-    "nav.archive": "Архив",
+    
     "nav.contacts": "Контакты",
     "nav.menu": "Меню",
     "nav.buyTicket": "Купить билет",
@@ -73,9 +73,6 @@ const dict = {
       "Магазин мерча в разработке. Футболки, худи и кепки в айдентике xXx Sound появятся здесь совсем скоро.",
     "shop.soon": "Скоро",
 
-    "archive.tag": "История",
-    "archive.title": "Архив",
-    "archive.people": "чел.",
 
     "contacts.tag": "Связь",
     "contacts.title": "Контакты",
@@ -107,7 +104,7 @@ const dict = {
     "nav.home": "Home",
     "nav.tickets": "Tickets",
     "nav.shop": "Shop",
-    "nav.archive": "Archive",
+    
     "nav.contacts": "Contacts",
     "nav.menu": "Menu",
     "nav.buyTicket": "Buy tickets",
@@ -165,9 +162,6 @@ const dict = {
       "The merch store is in the works. Tees, hoodies and caps in xXx Sound identity are landing here very soon.",
     "shop.soon": "Soon",
 
-    "archive.tag": "History",
-    "archive.title": "Archive",
-    "archive.people": "people",
 
     "contacts.tag": "Contact",
     "contacts.title": "Contacts",
