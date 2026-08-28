@@ -5,6 +5,7 @@ import { useI18n, type TKey } from "@/lib/i18n";
 const footerNav = [
   { to: "/tickets", key: "nav.tickets" },
   { to: "/shop", key: "nav.shop" },
+  { to: "/blog", key: "nav.blog" },
   { to: "/contacts", key: "nav.contacts" },
 ] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 

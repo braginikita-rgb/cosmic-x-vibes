@@ -8,6 +8,7 @@ const nav = [
   { to: "/", key: "nav.home" },
   { to: "/tickets", key: "nav.tickets" },
   { to: "/shop", key: "nav.shop" },
+  { to: "/blog", key: "nav.blog" },
   { to: "/contacts", key: "nav.contacts" },
 ] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
