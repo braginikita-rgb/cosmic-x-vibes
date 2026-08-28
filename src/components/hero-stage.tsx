@@ -8,6 +8,7 @@ import { useI18n, type TKey } from "@/lib/i18n";
 const quickLinks = [
   { to: "/shop", key: "nav.shop" },
   { to: "/tickets", key: "nav.tickets" },
+  { to: "/blog", key: "nav.blog" },
 ] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
 export function HeroStage() {
