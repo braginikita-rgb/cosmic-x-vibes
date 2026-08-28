@@ -200,7 +200,14 @@ type Ctx = {
   t: (key: TKey) => string;
 };
 
-const LangContext = createContext<Ctx | null>(null);
+const fallbackCtx: Ctx = {
+  lang: "ru",
+  setLang: () => {},
+  toggleLang: () => {},
+  t: (key: TKey) => dict.ru[key],
+};
+
+const LangContext = createContext<Ctx>(fallbackCtx);
 
 const STORAGE_KEY = "xxx-lang";
 
@@ -232,9 +239,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 }
 
 export function useI18n() {
-  const ctx = useContext(LangContext);
-  if (!ctx) throw new Error("useI18n must be used within LanguageProvider");
-  return ctx;
+  return useContext(LangContext);
 }
 
 /** Translates status / city / day values coming from static data. */
