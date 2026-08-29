@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
-import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -23,7 +22,7 @@ function Blog() {
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center px-5 py-24 text-center">
       <img
-        src={logoAsset.url}
+        src="/media/xxx-sound-logo.png"
         alt="xXx Sound"
         className="w-[40vw] max-w-[12rem] object-contain"
         width={220}

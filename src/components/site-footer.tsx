@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
 import { useI18n, type TKey } from "@/lib/i18n";
 
 const footerNav = [
@@ -17,7 +16,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 py-14">
         <div className="flex flex-col items-center border-b border-border pb-10 text-center">
           <img
-            src={logoAsset.url}
+            src="/media/xxx-sound-logo.png"
             alt="xXx Sound"
             className="h-12 w-auto"
             width={180}
