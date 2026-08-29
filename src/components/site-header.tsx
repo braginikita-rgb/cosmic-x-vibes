@@ -1,7 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
-import logoAsset from "@/assets/xxx-sound-logo.png.asset.json";
 import { useI18n, type TKey } from "@/lib/i18n";
 
 const nav = [
@@ -43,7 +42,7 @@ export function SiteHeader() {
       <div className="relative flex items-center justify-center rounded-b-[2rem] bg-background px-6 py-6 shadow-sm">
         <Link to="/" onClick={() => setOpen(false)} aria-label={t("nav.home.aria")}>
           <img
-            src={logoAsset.url}
+            src="/media/xxx-sound-logo.png"
             alt="xXx Sound"
             className="h-14 w-auto sm:h-16"
             width={220}

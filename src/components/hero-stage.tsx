@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
-import stageLoop from "@/assets/concert-cut.mp4.asset.json";
 import stageStatic from "@/assets/stage-static.jpg";
 import xxxLogo from "@/assets/xxx-white.png";
 import { useI18n, type TKey } from "@/lib/i18n";
@@ -17,7 +16,7 @@ export function HeroStage() {
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-foreground text-background">
       <video
-        src={stageLoop.url}
+        src="/media/concert-cut.mp4"
         poster={stageStatic}
         autoPlay
         muted
