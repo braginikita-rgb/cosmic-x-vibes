@@ -24,7 +24,7 @@ function Blog() {
       <img
         src="/media/xxx-sound-logo.png"
         alt="xXx Sound"
-        className="w-[40vw] max-w-[12rem] object-contain"
+        className="w-[40vw] max-w-[12rem] object-contain" loading="lazy" decoding="async"
         width={220}
         height={220}
       />

@@ -15,20 +15,23 @@ export function HeroStage() {
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-foreground text-background">
       <video
-        src="/media/concert-cut.mp4"
         poster={stageStatic}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         disablePictureInPicture
         disableRemotePlayback
         aria-label={t("hero.videoAlt")}
-        width={1080}
-        height={1920}
+        width={720}
+        height={1280}
         className="absolute inset-0 size-full object-cover contrast-125 grayscale"
-      />
+      >
+        <source src="/media/concert-cut.webm" type="video/webm" />
+        <source src="/media/concert-cut.mp4" type="video/mp4" />
+      </video>
+
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/80" />
 
       {/* классический логотип по центру */}

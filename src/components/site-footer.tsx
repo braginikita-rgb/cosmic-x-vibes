@@ -18,7 +18,7 @@ export function SiteFooter() {
           <img
             src="/media/xxx-sound-logo.png"
             alt="xXx Sound"
-            className="h-12 w-auto"
+            className="h-12 w-auto" loading="lazy" decoding="async"
             width={180}
             height={48}
           />
