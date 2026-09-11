@@ -6,11 +6,8 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const isLovableBuild =
-  process.env.LOVABLE_SANDBOX === "1" || Boolean(process.env.DEV_SERVER__PROJECT_PATH);
-
 export default defineConfig({
-  nitro: isLovableBuild ? undefined : false,
+  nitro: false,
   tanstackStart: {
     pages: [
       { path: "/" },
