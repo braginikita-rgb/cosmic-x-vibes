@@ -52,7 +52,6 @@ const dict = {
     "merch.tote": "Шоппер",
 
     "social.tag": "Соцсети",
-    "social.title": "Мы онлайн",
 
     "footer.about": "Концертная организация. Живой звук, свет и большие залы.",
     "footer.nav": "Навигация",
