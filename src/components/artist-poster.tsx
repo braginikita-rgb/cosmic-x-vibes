@@ -14,6 +14,7 @@ export function ArtistPoster() {
         <figure className="relative">
           <img
             src={artistPoster}
+            decoding="async"
             alt={t("poster.alt")}
             width={912}
             height={1200}
