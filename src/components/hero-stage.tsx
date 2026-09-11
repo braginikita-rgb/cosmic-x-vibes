@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import stageStatic from "@/assets/stage-static.jpg";
 import xxxLogo from "@/assets/xxx-white.png";
 import { useI18n, type TKey } from "@/lib/i18n";
 
@@ -15,7 +14,6 @@ export function HeroStage() {
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-foreground text-background">
       <video
-        poster={stageStatic}
         autoPlay
         muted
         loop
