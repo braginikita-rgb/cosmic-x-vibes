@@ -14,7 +14,7 @@ export function Socials() {
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 sm:py-24">
-      <SectionHeading tag={t("social.tag")} title={t("social.title")} />
+      <SectionHeading tag={t("social.tag")} />
       <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
         {links.map(({ label, handle, href, Icon }) => (
           <a
