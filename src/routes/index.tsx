@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeroStage } from "@/components/hero-stage";
 import { ArtistPoster } from "@/components/artist-poster";
 import { Announcements } from "@/components/announcements";
-import { Socials } from "@/components/socials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,7 +29,6 @@ function Index() {
       <HeroStage />
       <ArtistPoster />
       <Announcements />
-      <Socials />
     </>
   );
 }
