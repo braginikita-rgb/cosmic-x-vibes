@@ -44,7 +44,7 @@ const dict = {
     "ann.all": "Все даты",
 
     "merch.tag": "Мерч",
-    "merch.title": "Coming soon",
+    "merch.title": "Магазин",
     "merch.toShop": "В магазин",
     "merch.tee": "Футболка",
     "merch.hoodie": "Худи",
@@ -135,7 +135,7 @@ const dict = {
     "ann.all": "All dates",
 
     "merch.tag": "Merch",
-    "merch.title": "Coming soon",
+    "merch.title": "Shop",
     "merch.toShop": "To the shop",
     "merch.tee": "T-shirt",
     "merch.hoodie": "Hoodie",

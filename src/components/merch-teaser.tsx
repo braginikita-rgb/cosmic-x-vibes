@@ -48,7 +48,7 @@ export function MerchTeaser() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                     {t(item.typeKey)}
                   </p>
-                  <h3 className="mt-1.5 text-base">{item.name}</h3>
+                  <h3 className="mt-1.5 text-base">Coming soon</h3>
                 </div>
                 <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-accent" />
               </div>
