@@ -8,8 +8,7 @@ export const Route = createFileRoute("/contacts")({
       { title: "Контакты — xXx Sound" },
       {
         name: "description",
-        content:
-          "Связаться с xXx Sound: почта, телефон, офис и вопросы букинга и сотрудничества.",
+        content: "Связаться с xXx Sound: почта, телефон, офис и вопросы букинга и сотрудничества.",
       },
       { property: "og:title", content: "Контакты — xXx Sound" },
       { property: "og:description", content: "Почта, телефон и офис xXx Sound." },
@@ -22,14 +21,14 @@ const rows = [
   {
     Icon: Mail,
     key: "contacts.mail",
-    value: "hello@xxxsound.live",
-    href: "mailto:hello@xxxsound.live",
+    value: "info@xxxsoundxxx.com",
+    href: "mailto:info@xxxsoundxxx.com",
   },
   {
     Icon: Phone,
     key: "contacts.phone",
-    value: "+7 000 000-00-00",
-    href: "tel:+70000000000",
+    value: "+4915110926173",
+    href: "tel:+4915110926173",
   },
   { Icon: MapPin, key: "contacts.office", addressKey: "footer.address" },
 ] as const satisfies ReadonlyArray<{ key: TKey } & Record<string, unknown>>;
@@ -45,16 +44,13 @@ function Contacts() {
       <div className="mt-14 grid gap-10 lg:grid-cols-2">
         <div className="divide-y divide-border border-y border-foreground">
           {rows.map((row) => {
-            const value =
-              "value" in row ? row.value : t(row.addressKey as TKey);
+            const value = "value" in row ? row.value : t(row.addressKey as TKey);
             const href = "href" in row ? row.href : undefined;
             return (
               <div key={row.key} className="flex items-center gap-5 py-6">
                 <row.Icon className="size-5 text-accent" />
                 <div>
-                  <p className="label-tag text-[10px] text-muted-foreground">
-                    {t(row.key)}
-                  </p>
+                  <p className="label-tag text-[10px] text-muted-foreground">{t(row.key)}</p>
                   {href ? (
                     <a href={href} className="text-lg hover:text-accent">
                       {value}
@@ -70,11 +66,9 @@ function Contacts() {
 
         <div className="border border-foreground bg-card p-8">
           <h2 className="text-2xl">{t("contacts.bookingTitle")}</h2>
-          <p className="mt-4 text-sm text-muted-foreground">
-            {t("contacts.bookingText")}
-          </p>
+          <p className="mt-4 text-sm text-muted-foreground">{t("contacts.bookingText")}</p>
           <a
-            href="mailto:booking@xxxsound.live"
+            href="mailto:info@xxxsoundxxx.com"
             className="bar-label mt-8 bg-accent text-[10px] text-accent-foreground"
           >
             {t("contacts.write")}

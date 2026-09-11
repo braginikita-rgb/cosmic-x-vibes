@@ -62,8 +62,7 @@ const dict = {
 
     "tickets.tag": "Расписание",
     "tickets.title": "Билеты",
-    "tickets.lead":
-      "Выбирайте дату — и до встречи в зале. Количество билетов ограничено.",
+    "tickets.lead": "Выбирайте дату — и до встречи в зале. Количество билетов ограничено.",
     "tickets.season": "Сезон 2025/26",
     "tickets.all": "Все даты",
     "tickets.buy": "Купить",
@@ -76,8 +75,6 @@ const dict = {
     "blog.title": "Coming soon",
     "blog.text":
       "Блог в разработке. Скоро здесь появятся новости, репортажи со сцены и закулисье xXx Sound.",
-
-
 
     "contacts.tag": "Связь",
     "contacts.title": "Контакты",
@@ -156,8 +153,7 @@ const dict = {
 
     "tickets.tag": "Schedule",
     "tickets.title": "Tickets",
-    "tickets.lead":
-      "Pick a date and see you in the room. Ticket amount is limited.",
+    "tickets.lead": "Pick a date and see you in the room. Ticket amount is limited.",
     "tickets.season": "Season 2025/26",
     "tickets.all": "All dates",
     "tickets.buy": "Buy",
@@ -170,8 +166,6 @@ const dict = {
     "blog.title": "Coming soon",
     "blog.text":
       "The blog is in the works. News, show reports and backstage stories of xXx Sound are landing here soon.",
-
-
 
     "contacts.tag": "Contact",
     "contacts.title": "Contacts",

@@ -1,8 +1,7 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
   useRouterState,
   HeadContent,
@@ -15,8 +14,6 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LanguageProvider } from "@/lib/i18n";
-
-
 
 function NotFoundComponent() {
   return (
@@ -78,7 +75,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -127,22 +124,17 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const isHome = pathname === "/";
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <SiteHeader />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <main className={isHome ? undefined : "pt-28"}>
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </LanguageProvider>
-    </QueryClientProvider>
+    <LanguageProvider>
+      <SiteHeader />
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <main className={isHome ? undefined : "pt-28"}>
+        <Outlet />
+      </main>
+      <SiteFooter />
+    </LanguageProvider>
   );
-
 }
-

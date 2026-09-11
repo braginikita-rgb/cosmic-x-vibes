@@ -34,9 +34,7 @@ export function SiteHeader() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-transparent transition-all duration-700 ease-out ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none -translate-y-3 opacity-0"
+        visible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
       }`}
     >
       <div className="relative flex items-center justify-center rounded-b-[2rem] bg-background px-6 py-6 shadow-sm">

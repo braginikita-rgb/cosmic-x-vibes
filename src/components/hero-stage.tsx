@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown } from "lucide-react";
 import stageStatic from "@/assets/stage-static.jpg";
 import xxxLogo from "@/assets/xxx-white.png";
 import { useI18n, type TKey } from "@/lib/i18n";
@@ -22,7 +21,7 @@ export function HeroStage() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         disablePictureInPicture
         disableRemotePlayback
         aria-label={t("hero.videoAlt")}

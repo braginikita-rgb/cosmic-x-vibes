@@ -6,10 +6,25 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+const isLovableBuild =
+  process.env.LOVABLE_SANDBOX === "1" || Boolean(process.env.DEV_SERVER__PROJECT_PATH);
+
 export default defineConfig({
+  nitro: isLovableBuild ? undefined : false,
   tanstackStart: {
+    pages: [
+      { path: "/" },
+      { path: "/tickets" },
+      { path: "/shop" },
+      { path: "/blog" },
+      { path: "/contacts" },
+    ],
+    prerender: {
+      enabled: true,
+      crawlLinks: false,
+      failOnError: true,
+    },
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
     server: { entry: "server" },
   },
 });

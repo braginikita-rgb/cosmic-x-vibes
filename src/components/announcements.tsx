@@ -33,9 +33,7 @@ export function Announcements() {
               className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-2 py-6 transition-colors sm:grid-cols-[110px_1fr_200px_130px_auto] sm:gap-x-8"
             >
               <div className="row-span-2 sm:row-span-1">
-                <span className="font-display text-2xl leading-none sm:text-3xl">
-                  {show.date}
-                </span>
+                <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>
                 <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                   {d.day(show.day)}
                 </span>

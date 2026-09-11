@@ -29,9 +29,7 @@ export function Socials() {
               <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-background" />
             </div>
             <div>
-              <p className="text-lg transition-colors group-hover:text-background">
-                {label}
-              </p>
+              <p className="text-lg transition-colors group-hover:text-background">{label}</p>
               <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                 {handle}
               </p>

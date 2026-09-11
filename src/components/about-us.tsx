@@ -3,10 +3,7 @@ import { useI18n } from "@/lib/i18n";
 export function AboutUs() {
   const { t } = useI18n();
   return (
-    <section
-      id="about"
-      className="mx-auto max-w-5xl scroll-mt-28 px-5 py-24 text-center sm:py-32"
-    >
+    <section id="about" className="mx-auto max-w-5xl scroll-mt-28 px-5 py-24 text-center sm:py-32">
       <span className="label-tag text-[11px] text-accent">{t("about.tag")}</span>
       <h2 className="mt-6 font-mono text-4xl font-bold uppercase leading-[0.95] tracking-tight sm:text-6xl">
         {t("about.title1")}

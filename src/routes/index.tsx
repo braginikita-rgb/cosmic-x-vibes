@@ -5,7 +5,6 @@ import { Announcements } from "@/components/announcements";
 import { MerchTeaser } from "@/components/merch-teaser";
 import { Socials } from "@/components/socials";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [

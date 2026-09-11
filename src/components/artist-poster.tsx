@@ -9,10 +9,7 @@ export function ArtistPoster() {
   const d = useDataText();
 
   return (
-    <section
-      id="tour"
-      className="scroll-mt-28 bg-foreground py-20 text-background sm:py-28"
-    >
+    <section id="tour" className="scroll-mt-28 bg-foreground py-20 text-background sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
         <figure className="relative">
           <img
@@ -36,19 +33,14 @@ export function ArtistPoster() {
 
           <ul className="mt-10 divide-y divide-background/20 border-y border-background/20">
             {upcoming.map((show) => (
-              <li
-                key={show.id}
-                className="flex items-baseline justify-between gap-4 py-5"
-              >
+              <li key={show.id} className="flex items-baseline justify-between gap-4 py-5">
                 <div>
                   <p className="text-lg sm:text-xl">{d.city(show.city)}</p>
                   <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
                     {show.venue}
                   </p>
                 </div>
-                <span className="font-display text-2xl leading-none sm:text-3xl">
-                  {show.date}
-                </span>
+                <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>
               </li>
             ))}
           </ul>

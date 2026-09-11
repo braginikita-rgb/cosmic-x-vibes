@@ -22,9 +22,7 @@ export function SiteFooter() {
             width={180}
             height={48}
           />
-          <p className="mt-5 max-w-sm text-sm text-muted-foreground">
-            {t("footer.about")}
-          </p>
+          <p className="mt-5 max-w-sm text-sm text-muted-foreground">{t("footer.about")}</p>
         </div>
 
         <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -42,19 +40,19 @@ export function SiteFooter() {
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               {t("footer.contact")}
             </p>
-            <a href="mailto:hello@xxxsound.live" className="block text-sm hover:text-accent">
-              hello@xxxsound.live
+            <a href="mailto:info@xxxsoundxxx.com" className="block text-sm hover:text-accent">
+              info@xxxsoundxxx.com
             </a>
-            <a href="tel:+70000000000" className="block text-sm hover:text-accent">
-              +7 000 000-00-00
+            <a href="tel:+4915110926173" className="block text-sm hover:text-accent">
+              +4915110926173
             </a>
           </div>
           <div className="space-y-3">
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               {t("footer.booking")}
             </p>
-            <a href="mailto:booking@xxxsound.live" className="block text-sm hover:text-accent">
-              booking@xxxsound.live
+            <a href="mailto:info@xxxsoundxxx.com" className="block text-sm hover:text-accent">
+              info@xxxsoundxxx.com
             </a>
             <p className="text-sm text-muted-foreground">{t("footer.address")}</p>
           </div>
