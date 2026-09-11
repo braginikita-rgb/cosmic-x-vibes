@@ -52,7 +52,6 @@ const dict = {
     "merch.tote": "Шоппер",
 
     "social.tag": "Соцсети",
-    "social.title": "Мы онлайн",
 
     "footer.about": "Концертная организация. Живой звук, свет и большие залы.",
     "footer.nav": "Навигация",
@@ -143,7 +142,6 @@ const dict = {
     "merch.tote": "Tote bag",
 
     "social.tag": "Socials",
-    "social.title": "We are online",
 
     "footer.about": "Live music company. Real sound, real light, big rooms.",
     "footer.nav": "Navigation",

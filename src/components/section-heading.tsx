@@ -6,7 +6,7 @@ export function SectionHeading({
   children,
 }: {
   tag: string;
-  title: string;
+  title?: string;
   children?: ReactNode;
 }) {
   return (
@@ -16,7 +16,7 @@ export function SectionHeading({
           <span className="h-px w-6 bg-accent" />
           {tag}
         </p>
-        <h2 className="mt-3 text-3xl sm:text-5xl">{title}</h2>
+        {title && <h2 className="mt-3 text-3xl sm:text-5xl">{title}</h2>}
       </div>
       {children}
     </div>
