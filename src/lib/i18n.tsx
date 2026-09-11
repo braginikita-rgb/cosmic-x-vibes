@@ -142,7 +142,6 @@ const dict = {
     "merch.tote": "Tote bag",
 
     "social.tag": "Socials",
-    "social.title": "We are online",
 
     "footer.about": "Live music company. Real sound, real light, big rooms.",
     "footer.nav": "Navigation",
