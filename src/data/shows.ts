@@ -5,49 +5,44 @@ export type Show = {
   title: string;
   city: string;
   venue: string;
-  status: "В продаже" | "Мало билетов" | "Sold out";
-  price: string;
+  address: string;
 };
 
 export const upcoming: Show[] = [
   {
     id: "1",
-    date: "12.09",
-    day: "СБ",
-    title: "Night Frequency",
-    city: "Москва",
-    venue: "Adrenaline Stadium",
-    status: "В продаже",
-    price: "от 2 500 ₽",
+    date: "21.10",
+    day: "СР",
+    title: "The Limba",
+    city: "Варшава",
+    venue: "PROXIMA",
+    address: "Żwirki i Wigury 99A, 02-089 Warszawa",
   },
   {
     id: "2",
-    date: "27.09",
-    day: "ВС",
-    title: "Loud Room vol.4",
-    city: "Санкт-Петербург",
-    venue: "A2 Green Concert",
-    status: "Мало билетов",
-    price: "от 3 200 ₽",
+    date: "23.10",
+    day: "ПТ",
+    title: "The Limba",
+    city: "Рига",
+    venue: "Tower",
+    address: "Brīvības gat. 214B, Vidzemes priekšpilsēta, Rīga, LV-1039",
   },
   {
     id: "3",
-    date: "11.10",
-    day: "СБ",
-    title: "xXx Sound Showcase",
-    city: "Казань",
-    venue: "Kremlin Hall",
-    status: "В продаже",
-    price: "от 1 900 ₽",
+    date: "25.10",
+    day: "ВС",
+    title: "The Limba",
+    city: "Прага",
+    venue: "Roxy Prague",
+    address: "Dlouhá 33, 110 00 Staré Město, Чехия",
   },
   {
     id: "4",
-    date: "01.11",
+    date: "07.11",
     day: "СБ",
-    title: "Bass Cathedral",
-    city: "Екатеринбург",
-    venue: "Tele-Club",
-    status: "Sold out",
-    price: "—",
+    title: "The Limba",
+    city: "Кишинев",
+    venue: "SKAL",
+    address: "Strada 31 August 1989 117, Chișinău",
   },
 ];

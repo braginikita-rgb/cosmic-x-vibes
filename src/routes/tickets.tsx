@@ -16,6 +16,8 @@ export const Route = createFileRoute("/tickets")({
         property: "og:description",
         content: "Расписание концертов xXx Sound и покупка билетов.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Tickets,
@@ -37,31 +39,19 @@ function Tickets() {
           {upcoming.map((show) => (
             <li
               key={show.id}
-              className="flex flex-wrap items-center justify-between gap-4 border-b border-border py-7"
+              className="grid gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center"
             >
-              <div className="flex items-center gap-6">
-                <span className="logo-mark text-3xl">{show.date}</span>
-                <div>
-                  <h3 className="text-xl">{show.title}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {d.city(show.city)} · {show.venue}
-                  </p>
-                </div>
+              <span className="font-display text-3xl">{show.date}</span>
+              <div>
+                <h3 className="text-xl">{show.title}</h3>
+                <p className="text-sm font-semibold uppercase">
+                  {d.city(show.city)} · {show.venue}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="label-tag text-[10px] text-muted-foreground">
-                  {d.price(show.price)}
-                </span>
-                {show.status === "Sold out" ? (
-                  <span className="bar-label bg-muted text-[10px] text-muted-foreground">
-                    {t("status.soldout")}
-                  </span>
-                ) : (
-                  <button className="bar-label bg-accent text-[10px] text-accent-foreground transition-transform hover:-translate-y-0.5">
-                    {t("tickets.buy")}
-                  </button>
-                )}
-              </div>
+              <span className="bar-label bg-accent text-[10px] text-accent-foreground">
+                {t("tickets.buy")}
+              </span>
             </li>
           ))}
         </ul>

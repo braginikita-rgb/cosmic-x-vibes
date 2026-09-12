@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import artistPoster from "@/assets/artist-poster.jpg";
 import { upcoming } from "@/data/shows";
 import { useDataText, useI18n } from "@/lib/i18n";
 
@@ -13,16 +12,16 @@ export function ArtistPoster() {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
         <figure className="relative">
           <img
-            src={artistPoster}
+            src="/media/the-limba-tour-2026.webp"
             decoding="async"
-            alt={t("poster.alt")}
-            width={912}
-            height={1200}
+            alt="The Limba — Eastern EU Tour 26"
+            width={640}
+            height={800}
             loading="lazy"
-            className="w-full object-cover grayscale"
+            className="w-full object-cover"
           />
           <figcaption className="absolute bottom-0 left-0 bg-accent px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-accent-foreground">
-            Tour 2026
+            Eastern EU Tour 26
           </figcaption>
         </figure>
 
@@ -38,7 +37,7 @@ export function ArtistPoster() {
                 <div>
                   <p className="text-lg sm:text-xl">{d.city(show.city)}</p>
                   <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
-                    {show.venue}
+                    {show.venue} · {show.address}
                   </p>
                 </div>
                 <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>

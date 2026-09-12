@@ -4,12 +4,6 @@ import { SectionHeading } from "@/components/section-heading";
 import { upcoming } from "@/data/shows";
 import { useDataText, useI18n } from "@/lib/i18n";
 
-function statusClass(status: string) {
-  if (status === "Sold out") return "bg-muted text-muted-foreground";
-  if (status === "Мало билетов") return "bg-acid text-acid-foreground";
-  return "bg-accent text-accent-foreground";
-}
-
 export function Announcements() {
   const { t } = useI18n();
   const d = useDataText();
@@ -30,7 +24,7 @@ export function Announcements() {
           <li key={show.id}>
             <Link
               to="/tickets"
-              className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-2 py-6 transition-colors sm:grid-cols-[110px_1fr_200px_130px_auto] sm:gap-x-8"
+              className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-2 py-6 transition-colors sm:grid-cols-[110px_180px_1fr] sm:gap-x-8"
             >
               <div className="row-span-2 sm:row-span-1">
                 <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>
@@ -43,19 +37,10 @@ export function Announcements() {
                 {show.title}
               </h3>
 
-              <p className="col-start-2 text-sm text-muted-foreground sm:col-start-3">
-                {d.city(show.city)} · {show.venue}
-              </p>
-
-              <span
-                className={`w-fit px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] ${statusClass(show.status)}`}
-              >
-                {d.status(show.status)}
-              </span>
-
-              <span className="row-start-1 justify-self-end font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground sm:row-start-auto">
-                {d.price(show.price)}
-              </span>
+              <div className="col-start-2 sm:col-start-3">
+                <p className="text-sm font-semibold uppercase">{d.city(show.city)} · {show.venue}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
+              </div>
             </Link>
           </li>
         ))}

@@ -36,7 +36,7 @@ const dict = {
 
     "poster.tag": "Афиша",
     "poster.title": "Города и даты",
-    "poster.alt": "Артист на сцене",
+    "poster.alt": "Афиша тура The Limba",
     "poster.buy": "Купить билеты",
 
     "ann.tag": "Анонсы",
@@ -95,9 +95,15 @@ const dict = {
     "city.Екатеринбург": "Екатеринбург",
     "city.Сочи": "Сочи",
     "city.Новосибирск": "Новосибирск",
+    "city.Варшава": "Варшава",
+    "city.Рига": "Рига",
+    "city.Прага": "Прага",
+    "city.Кишинев": "Кишинев",
 
     "day.СБ": "СБ",
     "day.ВС": "ВС",
+    "day.СР": "СР",
+    "day.ПТ": "ПТ",
 
     "price.from": "от",
   },
@@ -126,7 +132,7 @@ const dict = {
 
     "poster.tag": "Poster",
     "poster.title": "Cities & dates",
-    "poster.alt": "Artist on stage",
+    "poster.alt": "The Limba tour poster",
     "poster.buy": "Buy tickets",
 
     "ann.tag": "Announcements",
@@ -185,9 +191,15 @@ const dict = {
     "city.Екатеринбург": "Yekaterinburg",
     "city.Сочи": "Sochi",
     "city.Новосибирск": "Novosibirsk",
+    "city.Варшава": "Warsaw",
+    "city.Рига": "Riga",
+    "city.Прага": "Prague",
+    "city.Кишинев": "Chișinău",
 
     "day.СБ": "SAT",
     "day.ВС": "SUN",
+    "day.СР": "WED",
+    "day.ПТ": "FRI",
 
     "price.from": "from",
   },
