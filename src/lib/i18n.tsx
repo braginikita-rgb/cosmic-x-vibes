@@ -85,7 +85,6 @@ const dict = {
     "contacts.tag": "Связь",
     "contacts.title": "Контакты",
     "contacts.mail": "Почта",
-    "contacts.phone": "Телефон",
     "contacts.office": "Офис",
     "contacts.bookingTitle": "Букинг и сотрудничество",
     "contacts.bookingText":
@@ -189,7 +188,6 @@ const dict = {
     "contacts.tag": "Contact",
     "contacts.title": "Contacts",
     "contacts.mail": "Email",
-    "contacts.phone": "Phone",
     "contacts.office": "Office",
     "contacts.bookingTitle": "Booking & partnerships",
     "contacts.bookingText":
