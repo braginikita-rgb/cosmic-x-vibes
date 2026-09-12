@@ -20,12 +20,9 @@ export function Announcements() {
       </SectionHeading>
 
       <ul className="divide-y divide-border">
-        {upcoming.map((show) => (
-          <li key={show.id}>
-            <Link
-              to="/tickets"
-              className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-2 py-6 transition-colors sm:grid-cols-[110px_180px_1fr] sm:gap-x-8"
-            >
+        {upcoming.map((show) => {
+          const item = (
+            <>
               <div className="row-span-2 sm:row-span-1">
                 <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>
                 <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -41,9 +38,31 @@ export function Announcements() {
                 <p className="text-sm font-semibold uppercase">{d.city(show.city)} · {show.venue}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
               </div>
-            </Link>
-          </li>
-        ))}
+            </>
+          );
+
+          return (
+            <li key={show.id}>
+              {show.ticketUrl ? (
+                <a
+                  href={show.ticketUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-2 py-6 transition-colors hover:bg-accent/5 sm:grid-cols-[110px_180px_1fr] sm:gap-x-8"
+                >
+                  {item}
+                </a>
+              ) : (
+                <Link
+                  to="/tickets"
+                  className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-2 py-6 transition-colors sm:grid-cols-[110px_180px_1fr] sm:gap-x-8"
+                >
+                  {item}
+                </Link>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
