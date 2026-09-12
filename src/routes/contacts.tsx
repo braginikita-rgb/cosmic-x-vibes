@@ -12,6 +12,8 @@ export const Route = createFileRoute("/contacts")({
       },
       { property: "og:title", content: "Контакты — xXx Sound" },
       { property: "og:description", content: "Почта, телефон и офис xXx Sound." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contacts,

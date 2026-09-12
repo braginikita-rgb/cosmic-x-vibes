@@ -11,6 +11,8 @@ export const Route = createFileRoute("/blog")({
       },
       { property: "og:title", content: "Блог — xXx Sound" },
       { property: "og:description", content: "Блог xXx Sound — coming soon." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Blog,
