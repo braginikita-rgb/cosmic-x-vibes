@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "preload", as: "image", href: "/media/hero-poster.webp", fetchpriority: "high" },
+      { rel: "preload", as: "image", href: "/media/hero-poster.webp", fetchPriority: "high" },
       { rel: "prefetch", as: "document", href: "/media/chrome-xxx.html" },
     ],
   }),
