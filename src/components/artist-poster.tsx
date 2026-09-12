@@ -10,10 +10,6 @@ export function ArtistPoster() {
   return (
     <section id="tour" className="scroll-mt-28 bg-foreground py-20 text-background sm:py-28">
       <div className="mx-auto max-w-7xl px-5">
-        <p className="mb-10 text-center font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-accent sm:mb-14 sm:text-left">
-          Eastern EU Tour 26
-        </p>
-
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
           <figure className="relative">
             <img
