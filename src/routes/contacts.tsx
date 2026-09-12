@@ -26,12 +26,6 @@ const rows = [
     value: "info@xxxsoundxxx.com",
     href: "mailto:info@xxxsoundxxx.com",
   },
-  {
-    Icon: Phone,
-    key: "contacts.phone",
-    value: "+4915110926173",
-    href: "tel:+4915110926173",
-  },
   { Icon: MapPin, key: "contacts.office", addressKey: "footer.address" },
 ] as const satisfies ReadonlyArray<{ key: TKey } & Record<string, unknown>>;
 
