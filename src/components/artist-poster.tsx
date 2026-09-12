@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { upcoming } from "@/data/shows";
 import { useDataText, useI18n } from "@/lib/i18n";
+import logoWhite from "@/assets/xxx-white-small.png.asset.json";
 
 export function ArtistPoster() {
   const { t } = useI18n();
