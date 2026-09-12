@@ -32,26 +32,19 @@ export function PresaleMerch({ compact = false }: PresaleMerchProps) {
         <div className="mt-10 grid gap-x-5 gap-y-12 md:grid-cols-2">
           {presaleProducts.map((product) => (
             <article key={product.id}>
-              <div className="grid grid-cols-2 gap-1 bg-foreground p-1">
-                {product.images.map((image) => (
-                  <figure key={image.src} className="relative overflow-hidden bg-foreground">
-                    <img
-                      src={image.src}
-                      srcSet={`${image.src.replace(".webp", "-480.webp")} 480w, ${image.src} 960w`}
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      alt={`${t(product.nameKey)} — ${t(image.viewKey)}`}
-                      width={960}
-                      height={1200}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[4/5] h-full w-full object-cover"
-                    />
-                    <figcaption className="absolute bottom-2 left-2 bg-background px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-foreground">
-                      {t(image.viewKey)}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
+              <figure className="relative overflow-hidden bg-foreground">
+                <img
+                  src={product.image}
+                  srcSet={`${product.image.replace(".webp", "-700.webp")} 700w, ${product.image} 1400w`}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  alt={`${t(product.nameKey)} — ${t("merch.front")} / ${t("merch.back")}`}
+                  width={1400}
+                  height={933}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[3/2] h-full w-full object-cover"
+                />
+              </figure>
 
               <div className="mt-5 flex items-end justify-between gap-5 border-b border-foreground pb-5">
                 <div>
