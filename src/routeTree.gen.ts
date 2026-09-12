@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactsRouteImport } from './routes/contacts'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as LegalNoticeRouteImport } from './routes/legal-notice'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as TicketsRouteImport } from './routes/tickets'
 
@@ -30,6 +33,21 @@ const ContactsRoute = ContactsRouteImport.update({
   path: '/contacts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalNoticeRoute = LegalNoticeRouteImport.update({
+  id: '/legal-notice',
+  path: '/legal-notice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -45,6 +63,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/contacts': typeof ContactsRoute
+  '/faq': typeof FaqRoute
+  '/legal-notice': typeof LegalNoticeRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/shop': typeof ShopRoute
   '/tickets': typeof TicketsRoute
 }
@@ -52,6 +73,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/contacts': typeof ContactsRoute
+  '/faq': typeof FaqRoute
+  '/legal-notice': typeof LegalNoticeRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/shop': typeof ShopRoute
   '/tickets': typeof TicketsRoute
 }
@@ -60,21 +84,52 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/contacts': typeof ContactsRoute
+  '/faq': typeof FaqRoute
+  '/legal-notice': typeof LegalNoticeRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/shop': typeof ShopRoute
   '/tickets': typeof TicketsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog' | '/contacts' | '/shop' | '/tickets'
+  fullPaths:
+    | '/'
+    | '/blog'
+    | '/contacts'
+    | '/faq'
+    | '/legal-notice'
+    | '/privacy-policy'
+    | '/shop'
+    | '/tickets'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/contacts' | '/shop' | '/tickets'
-  id: '__root__' | '/' | '/blog' | '/contacts' | '/shop' | '/tickets'
+  to:
+    | '/'
+    | '/blog'
+    | '/contacts'
+    | '/faq'
+    | '/legal-notice'
+    | '/privacy-policy'
+    | '/shop'
+    | '/tickets'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/contacts'
+    | '/faq'
+    | '/legal-notice'
+    | '/privacy-policy'
+    | '/shop'
+    | '/tickets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRoute
   ContactsRoute: typeof ContactsRoute
+  FaqRoute: typeof FaqRoute
+  LegalNoticeRoute: typeof LegalNoticeRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ShopRoute: typeof ShopRoute
   TicketsRoute: typeof TicketsRoute
 }
@@ -102,6 +157,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal-notice': {
+      id: '/legal-notice'
+      path: '/legal-notice'
+      fullPath: '/legal-notice'
+      preLoaderRoute: typeof LegalNoticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -123,6 +199,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRoute,
   ContactsRoute: ContactsRoute,
+  FaqRoute: FaqRoute,
+  LegalNoticeRoute: LegalNoticeRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ShopRoute: ShopRoute,
   TicketsRoute: TicketsRoute,
 }
