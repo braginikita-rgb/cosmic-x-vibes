@@ -36,24 +36,42 @@ function Tickets() {
       <div className="mt-14">
         <SectionHeading tag={t("tickets.season")} title={t("tickets.all")} />
         <ul>
-          {upcoming.map((show) => (
-            <li
-              key={show.id}
-              className="grid gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center"
-            >
-              <span className="font-display text-3xl">{show.date}</span>
-              <div>
-                <h3 className="text-xl">{show.title}</h3>
-                <p className="text-sm font-semibold uppercase">
-                  {d.city(show.city)} · {show.venue}
-                </p>
-                <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
-              </div>
-              <span className="bar-label bg-accent text-[10px] text-accent-foreground">
-                {t("tickets.buy")}
-              </span>
-            </li>
-          ))}
+          {upcoming.map((show) => {
+            const content = (
+              <>
+                <span className="font-display text-3xl">{show.date}</span>
+                <div>
+                  <h3 className="text-xl">{show.title}</h3>
+                  <p className="text-sm font-semibold uppercase">
+                    {d.city(show.city)} · {show.venue}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
+                </div>
+                <span className="bar-label bg-accent text-[10px] text-accent-foreground">
+                  {t("tickets.buy")}
+                </span>
+              </>
+            );
+
+            return (
+              <li key={show.id}>
+                {show.ticketUrl ? (
+                  <a
+                    href={show.ticketUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid gap-5 border-b border-border py-7 transition-colors hover:bg-accent/5 sm:grid-cols-[120px_1fr_auto] sm:items-center"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div className="grid gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center">
+                    {content}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
