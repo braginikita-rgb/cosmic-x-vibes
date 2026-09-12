@@ -116,7 +116,7 @@ function Blog() {
                 >
                   <p>
                     The tour starts on October 21 in Warsaw at Proxima, followed by shows in
-                    Riga on October 23 and Prague on October 25.
+                    Riga on October 23 and Prague on October 29.
                   </p>
                   <p>The final date of the run takes place in Chișinău on November 7.</p>
                   <p>
@@ -130,7 +130,7 @@ function Blog() {
                     <div className="grid gap-1 border-b border-border py-5 sm:grid-cols-[11rem_1fr]">
                       <dt className="font-display text-xl uppercase">23 October — Riga</dt>
                       <dd>
-                        Tower<br />
+                        The Tower<br />
                         <span className="text-muted-foreground">Brīvības gatve 214B, Riga</span>
                       </dd>
                     </div>
