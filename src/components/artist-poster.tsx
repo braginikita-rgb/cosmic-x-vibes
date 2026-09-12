@@ -14,6 +14,8 @@ export function ArtistPoster() {
           <figure className="relative">
             <img
               src="/media/the-limba-tour-2026.webp"
+              srcSet="/media/the-limba-tour-2026-400.webp 400w, /media/the-limba-tour-2026.webp 640w"
+              sizes="(max-width: 1024px) 100vw, 45vw"
               decoding="async"
               alt="The Limba — Eastern EU Tour 26"
               width={640}
