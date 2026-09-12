@@ -37,6 +37,8 @@ export function PresaleMerch({ compact = false }: PresaleMerchProps) {
                   <figure key={image.src} className="relative overflow-hidden bg-foreground">
                     <img
                       src={image.src}
+                      srcSet={`${image.src.replace(".webp", "-480.webp")} 480w, ${image.src} 960w`}
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       alt={`${t(product.nameKey)} — ${t(image.viewKey)}`}
                       width={960}
                       height={1200}

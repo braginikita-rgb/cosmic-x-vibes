@@ -76,6 +76,8 @@ function Blog() {
         <figure className="relative aspect-[4/5] overflow-hidden bg-foreground sm:aspect-[16/10]">
           <img
             src="/media/the-limba-blog-portrait.webp"
+            srcSet="/media/the-limba-blog-portrait-700.webp 700w, /media/the-limba-blog-portrait.webp 1400w"
+            sizes="100vw"
             alt="The Limba — Eastern Europe Tour 2026"
             width={1400}
             height={1750}
@@ -178,6 +180,8 @@ function Blog() {
         <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.55fr)] lg:items-end">
           <img
             src="/media/the-limba-tour-map.webp"
+            srcSet="/media/the-limba-tour-map-700.webp 700w, /media/the-limba-tour-map.webp 1400w"
+            sizes="(max-width: 1024px) 100vw, 60vw"
             alt="Eastern Europe Tour 2026 route map"
             width={1400}
             height={1750}
