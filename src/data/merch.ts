@@ -3,10 +3,7 @@ export type MerchProduct = {
   nameKey: "merch.presaleTee" | "merch.presaleHoodie";
   currentPrice: number;
   previousPrice: number;
-  images: ReadonlyArray<{
-    src: string;
-    viewKey: "merch.front" | "merch.back";
-  }>;
+  image: string;
 };
 
 export const presaleProducts: ReadonlyArray<MerchProduct> = [
@@ -15,19 +12,13 @@ export const presaleProducts: ReadonlyArray<MerchProduct> = [
     nameKey: "merch.presaleTee",
     currentPrice: 35,
     previousPrice: 50,
-    images: [
-      { src: "/media/presale-tee-front.webp", viewKey: "merch.front" },
-      { src: "/media/presale-tee-back.webp", viewKey: "merch.back" },
-    ],
+    image: "/media/presale-tee.webp",
   },
   {
     id: "eastern-eu-tour-hoodie",
     nameKey: "merch.presaleHoodie",
     currentPrice: 75,
     previousPrice: 90,
-    images: [
-      { src: "/media/presale-hoodie-front.webp", viewKey: "merch.front" },
-      { src: "/media/presale-hoodie-back.webp", viewKey: "merch.back" },
-    ],
+    image: "/media/presale-hoodie.webp",
   },
 ];
