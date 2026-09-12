@@ -68,6 +68,7 @@ const dict = {
     "footer.legal": "Информация",
     "footer.legalNotice": "Legal Notice",
     "footer.privacyPolicy": "Privacy Policy",
+    "footer.refundPolicy": "Условия возврата",
     "footer.faq": "FAQ",
 
     "faq.tag": "Помощь",
@@ -193,6 +194,7 @@ const dict = {
     "footer.legal": "Information",
     "footer.legalNotice": "Legal Notice",
     "footer.privacyPolicy": "Privacy Policy",
+    "footer.refundPolicy": "Refund Policy",
     "footer.faq": "FAQ",
 
     "faq.tag": "Help",
