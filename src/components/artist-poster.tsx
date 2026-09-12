@@ -23,6 +23,15 @@ export function ArtistPoster() {
               loading="lazy"
               className="w-full object-cover"
             />
+            <img
+              src="/media/xxx-white-small.webp"
+              alt="xXx Sound"
+              width={200}
+              height={200}
+              loading="lazy"
+              decoding="async"
+              className="absolute left-3 top-3 z-10 h-10 w-auto sm:h-14"
+            />
             <figcaption className="absolute right-0 top-0 bg-accent px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-accent-foreground">
               October 2026
             </figcaption>
