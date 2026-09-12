@@ -43,17 +43,40 @@ export function ArtistPoster() {
             </h2>
 
             <ul className="mt-10 divide-y divide-background/20 border-y border-background/20">
-              {upcoming.map((show) => (
-                <li key={show.id} className="flex items-baseline justify-between gap-4 py-5">
-                  <div>
-                    <p className="text-lg sm:text-xl">{d.city(show.city)}</p>
-                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
-                      {show.venue} · {show.address}
-                    </p>
-                  </div>
-                  <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>
-                </li>
-              ))}
+              {upcoming.map((show) => {
+                const item = (
+                  <>
+                    <div>
+                      <p className="text-lg transition-colors group-hover:text-accent sm:text-xl">
+                        {d.city(show.city)}
+                      </p>
+                      <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
+                        {show.venue} · {show.address}
+                      </p>
+                    </div>
+                    <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>
+                  </>
+                );
+
+                return (
+                  <li key={show.id}>
+                    {show.ticketUrl ? (
+                      <a
+                        href={show.ticketUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-baseline justify-between gap-4 py-5 transition-colors hover:bg-background/5"
+                      >
+                        {item}
+                      </a>
+                    ) : (
+                      <div className="flex items-baseline justify-between gap-4 py-5">
+                        {item}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
 
             <Link

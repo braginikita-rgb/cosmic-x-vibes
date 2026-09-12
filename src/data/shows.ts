@@ -6,6 +6,7 @@ export type Show = {
   city: string;
   venue: string;
   address: string;
+  ticketUrl?: string;
 };
 
 export const upcoming: Show[] = [
@@ -35,6 +36,8 @@ export const upcoming: Show[] = [
     city: "Прага",
     venue: "ROXY CLUB",
     address: "Dlouhá 33, 110 00 Old Town, Prague 1",
+    ticketUrl:
+      "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-61b8d7?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-61b8d7",
   },
   {
     id: "4",
@@ -44,5 +47,7 @@ export const upcoming: Show[] = [
     city: "Кишинев",
     venue: "SKAL",
     address: "Strada 31 August 1989 117, Chișinău",
+    ticketUrl:
+      "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-4f0d3e?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-4f0d3e",
   },
 ];
