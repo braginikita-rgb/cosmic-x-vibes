@@ -37,20 +37,10 @@ function Tickets() {
         <SectionHeading tag={t("tickets.season")} title={t("tickets.all")} />
         <ul>
           {upcoming.map((show) => {
-            const content = (
-              <>
-                <span className="font-display text-3xl">{show.date}</span>
-                <div>
-                  <h3 className="text-xl">{show.title}</h3>
-                  <p className="text-sm font-semibold uppercase">
-                    {d.city(show.city)} · {show.venue}
-                  </p>
-                  <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
-                </div>
-                <span className="bar-label col-span-2 mt-1 justify-self-center bg-accent text-[10px] text-accent-foreground sm:col-span-1 sm:mt-0 sm:justify-self-auto">
-                  {t("tickets.buy")}
-                </span>
-              </>
+            const buyButton = (
+              <span className="bar-label col-span-2 w-full bg-accent text-center text-[10px] text-accent-foreground sm:col-span-1 sm:w-auto">
+                {t("tickets.buy")}
+              </span>
             );
 
             return (
@@ -62,11 +52,27 @@ function Tickets() {
                     rel="noopener noreferrer"
                     className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 transition-colors hover:bg-accent/5 sm:grid-cols-[120px_1fr_auto] sm:items-center"
                   >
-                    {content}
+                    <span className="font-display text-3xl">{show.date}</span>
+                    <div>
+                      <h3 className="text-xl">{show.title}</h3>
+                      <p className="text-sm font-semibold uppercase">
+                        {d.city(show.city)} · {show.venue}
+                      </p>
+                      <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
+                    </div>
+                    {buyButton}
                   </a>
                 ) : (
                   <div className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center">
-                    {content}
+                    <span className="font-display text-3xl">{show.date}</span>
+                    <div>
+                      <h3 className="text-xl">{show.title}</h3>
+                      <p className="text-sm font-semibold uppercase">
+                        {d.city(show.city)} · {show.venue}
+                      </p>
+                      <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
+                    </div>
+                    {buyButton}
                   </div>
                 )}
               </li>
