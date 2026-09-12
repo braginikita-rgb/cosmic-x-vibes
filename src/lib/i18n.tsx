@@ -57,7 +57,7 @@ const dict = {
     "footer.nav": "Навигация",
     "footer.contact": "Связь",
     "footer.booking": "Букинг",
-    "footer.address": "Москва, ул. Сценическая, 3",
+    "footer.address": "GI Invest GmbH, Hermannstraße 25, 64285 Darmstadt, Germany",
 
     "tickets.tag": "Расписание",
     "tickets.title": "Билеты",
@@ -153,7 +153,7 @@ const dict = {
     "footer.nav": "Navigation",
     "footer.contact": "Contact",
     "footer.booking": "Booking",
-    "footer.address": "Moscow, Stsenicheskaya st. 3",
+    "footer.address": "GI Invest GmbH, Hermannstraße 25, 64285 Darmstadt, Germany",
 
     "tickets.tag": "Schedule",
     "tickets.title": "Tickets",
