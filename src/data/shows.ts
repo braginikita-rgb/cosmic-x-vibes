@@ -18,6 +18,8 @@ export const upcoming: Show[] = [
     city: "Варшава",
     venue: "PROXIMA",
     address: "Żwirki i Wigury 99A, 02-089 Warszawa",
+    ticketUrl:
+      "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-384a2d?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-384a2d",
   },
   {
     id: "2",
@@ -27,6 +29,8 @@ export const upcoming: Show[] = [
     city: "Рига",
     venue: "The Tower",
     address: "Brīvības gat. 214B, Vidzemes priekšpilsēta, Rīga, LV-1039",
+    ticketUrl:
+      "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-d5add0?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-d5add0",
   },
   {
     id: "3",
