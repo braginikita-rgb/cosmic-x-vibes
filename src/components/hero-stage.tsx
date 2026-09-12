@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import xxxLogo from "@/assets/xxx-white.png";
 import { useI18n, type TKey } from "@/lib/i18n";
 
 const quickLinks = [
@@ -35,10 +34,12 @@ export function HeroStage() {
       {/* классический логотип по центру */}
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-between px-4 py-6 sm:px-6 sm:py-8">
         <div className="flex flex-1 flex-col items-center justify-center gap-8">
-          <img
-            src={xxxLogo}
-            alt="xXx"
-            className="w-[72vw] max-w-2xl opacity-75 drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+          <iframe
+            src="/media/chrome-xxx.html"
+            title="Animated chrome XXX"
+            className="pointer-events-none aspect-[3/2] w-[92vw] max-w-5xl border-0 bg-transparent drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
+            loading="eager"
+            sandbox="allow-scripts"
           />
           <nav className="flex items-center gap-6 sm:gap-10">
             {quickLinks.map((item) => (
