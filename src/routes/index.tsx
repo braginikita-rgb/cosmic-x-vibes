@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HeroStage } from "@/components/hero-stage";
 import { ArtistPoster } from "@/components/artist-poster";
-import { Announcements } from "@/components/announcements";
+import { PresaleMerch } from "@/components/presale-merch";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,7 +35,7 @@ function Index() {
       <h1 className="sr-only">xXx Sound — концертная организация</h1>
       <HeroStage />
       <ArtistPoster />
-      <Announcements />
+      <PresaleMerch compact />
     </>
   );
 }
