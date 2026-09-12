@@ -1,0 +1,58 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chrome XXX</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}chrome-xxx{width:100%;height:100%}</style><chrome-xxx duration="18"></chrome-xxx><script>/* Chrome XXX — original WebGL geometry, no dependencies or network requests. */
+(() => {
+'use strict';
+class ChromeXXX extends HTMLElement {
+ connectedCallback() {
+  if(this.canvas){this.frame=requestAnimationFrame(this.tick);return;}
+  const root=this.attachShadow({mode:'open'});
+  root.innerHTML=`<style>:host{display:block;width:100%;aspect-ratio:3/2}canvas{width:100%;height:100%;display:block}</style><canvas role="img" aria-label="Three rotating chrome X letters"></canvas>`;
+  this.canvas=root.querySelector('canvas');
+  const gl=this.canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false,preserveDrawingBuffer:true});
+  if(!gl){root.innerHTML='<span style="font:bold 100px sans-serif;color:silver">XXX</span>';return;}
+  this.gl=gl;
+  const vs=`attribute vec3 position;attribute vec3 normal;uniform float angle;uniform float aspect;varying vec3 N;varying vec3 P;
+  void main(){float c=cos(angle),s=sin(angle);mat3 ry=mat3(c,0.,-s,0.,1.,0.,s,0.,c);float t=-.055;mat3 rx=mat3(1.,0.,0.,0.,cos(t),sin(t),0.,-sin(t),cos(t));P=rx*ry*position;N=rx*ry*normal;float h=max(2.15,3.25/aspect);gl_Position=vec4(P.x/(h*aspect),P.y/h,-P.z/12.,1.);}`;
+  const fs=`precision highp float;varying vec3 N;varying vec3 P;
+  float box(vec3 r,vec3 axis,float a,float b){return smoothstep(a,b,dot(r,normalize(axis)));}
+  vec3 studio(vec3 r){
+   vec3 col=mix(vec3(.016,.02,.027),vec3(.18,.195,.22),smoothstep(-.8,.8,r.y));
+   col+=vec3(2.7,2.75,2.85)*box(r,vec3(-.8,1.,1.),.74,.92);
+   col+=vec3(1.7,1.8,2.)*box(r,vec3(1.,.4,.45),.91,.97);
+   col+=vec3(1.5)*box(r,vec3(-1.,-.65,-.2),.92,.985);
+   col+=vec3(.65,.7,.8)*box(r,vec3(.15,.8,-1.),.6,.88);
+   float band=exp(-pow((r.y+.16)/.048,2.));col+=vec3(1.2,1.25,1.3)*band;
+   float strip=exp(-pow((r.x-.48)/.045,2.))*smoothstep(-.5,-.2,r.y);col+=vec3(1.2)*strip;
+   return col;
+  }
+  void main(){vec3 n=normalize(N);vec3 v=normalize(vec3(0.,0.,6.)-P);vec3 r=reflect(-v,n);vec3 col=studio(r);float f=pow(1.-max(dot(n,v),0.),5.);col*=mix(.92,1.12,f);col=col/(col+vec3(.68));col=pow(col,vec3(1./2.2));gl_FragColor=vec4(col,1.);}`;
+  const shader=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
+  const prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,vs));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));gl.useProgram(prog);
+  const data=[];
+  const base=[[-.5,.5],[-.24,.5],[0,.14],[.24,.5],[.5,.5],[.17,0],[.5,-.5],[.24,-.5],[0,-.14],[-.24,-.5],[-.5,-.5],[-.17,0]].reverse();
+  function letter(cx,cy,w,h,d){
+   const pts=base.map(p=>[p[0]*w+cx,p[1]*h+cy]);const L=pts.length,b=.065;
+   const normals=pts.map((p,i)=>{const q=pts[(i+1)%L],dx=q[0]-p[0],dy=q[1]-p[1],l=Math.hypot(dx,dy);return [dy/l,-dx/l];});
+   const bis=pts.map((p,i)=>{let a=normals[(i+L-1)%L],b=normals[i],x=a[0]+b[0],y=a[1]+b[1],den=x*b[0]+y*b[1];return [x/den,y/den];});
+   const vertex=(i,inset,z,theta,sign)=>{const p=pts[i],q=bis[i],n=normals[i];return {p:[p[0]-inset*q[0],p[1]-inset*q[1],z],n:[q[0]*Math.cos(theta),q[1]*Math.cos(theta),sign*Math.sin(theta)]};};
+   const emit=(a,b,c)=>{for(const v of [a,b,c])data.push(...v.p,...v.n);};
+   for(const sign of [1,-1]){
+    const rings=[];for(let j=0;j<=5;j++){const t=j/5*Math.PI/2;rings.push(pts.map((p,i)=>vertex(i,b*(1-Math.cos(t)),sign*(d/2-b+b*Math.sin(t)),t,sign)));}
+    for(let j=0;j<5;j++)for(let i=0;i<L;i++){let k=(i+1)%L;emit(rings[j][i],rings[j][k],rings[j+1][k]);emit(rings[j][i],rings[j+1][k],rings[j+1][i]);}
+    const front=rings[5];const center={p:[cx,cy,sign*d/2],n:[0,0,sign]};for(let i=0;i<L;i++)emit(center,front[i],front[(i+1)%L]);
+   }
+   for(let i=0;i<L;i++){const k=(i+1)%L,n=[...normals[i],0];let a={p:[...pts[i],-d/2+b],n},bb={p:[...pts[k],-d/2+b],n},c={p:[...pts[k],d/2-b],n},dd={p:[...pts[i],d/2-b],n};emit(a,bb,c);emit(a,c,dd);}
+  }
+  letter(-1.93,-.20,1.72,1.96,.32);letter(0,.035,2.42,2.86,.40);letter(1.93,-.20,1.72,1.96,.32);
+  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);
+  for(const [name,offset] of [['position',0],['normal',12]]){const loc=gl.getAttribLocation(prog,name);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,24,offset);}
+  const au=gl.getUniformLocation(prog,'angle'),asu=gl.getUniformLocation(prog,'aspect');gl.enable(gl.DEPTH_TEST);gl.clearColor(0,0,0,0);
+  this.draw=(seconds)=>{const ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(this.clientWidth*ratio)),h=Math.max(1,Math.round(this.clientHeight*ratio));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}gl.viewport(0,0,w,h);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniform1f(au,-seconds*Math.PI*2/(Number(this.getAttribute('duration'))||18));gl.uniform1f(asu,w/h);gl.drawArrays(gl.TRIANGLES,0,data.length/6);};
+  const media=matchMedia('(prefers-reduced-motion: reduce)');let elapsed=0,previous=null;
+  this.tick=t=>{if(previous!==null&&!document.hidden)elapsed+=(t-previous)/1000;previous=t;if(!this.hasAttribute('paused'))this.draw(media.matches?0:elapsed);this.frame=requestAnimationFrame(this.tick);};
+  this.draw(0);this.frame=requestAnimationFrame(this.tick);
+ }
+ disconnectedCallback(){cancelAnimationFrame(this.frame);}
+}
+if(!customElements.get('chrome-xxx'))customElements.define('chrome-xxx',ChromeXXX);
+})();
+</script></html>
