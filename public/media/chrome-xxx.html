@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chrome XXX</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}chrome-xxx{width:100%;height:100%}</style><chrome-xxx duration="18"></chrome-xxx><script>/* Chrome XXX — original WebGL geometry, no dependencies or network requests. */
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chrome XXX</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}chrome-xxx{width:100%;height:100%}</style><chrome-xxx duration="14"></chrome-xxx><script>/* Chrome XXX — original WebGL geometry, no dependencies or network requests. */
 (() => {
 'use strict';
 class ChromeXXX extends HTMLElement {
@@ -11,26 +11,28 @@ class ChromeXXX extends HTMLElement {
   if(!gl){root.innerHTML='<span style="font:bold 100px sans-serif;color:silver">XXX</span>';return;}
   this.gl=gl;
   const vs=`attribute vec3 position;attribute vec3 normal;uniform float angle;uniform float aspect;varying vec3 N;varying vec3 P;
-  void main(){float c=cos(angle),s=sin(angle);mat3 ry=mat3(c,0.,-s,0.,1.,0.,s,0.,c);float t=-.055;mat3 rx=mat3(1.,0.,0.,0.,cos(t),sin(t),0.,-sin(t),cos(t));P=rx*ry*position;N=rx*ry*normal;float h=max(2.15,3.25/aspect);gl_Position=vec4(P.x/(h*aspect),P.y/h,-P.z/12.,1.);}`;
+  void main(){float c=cos(angle),s=sin(angle);mat3 ry=mat3(c,0.,-s,0.,1.,0.,s,0.,c);float t=0.;mat3 rx=mat3(1.,0.,0.,0.,cos(t),sin(t),0.,-sin(t),cos(t));P=rx*ry*position;N=rx*ry*normal;float h=max(2.15,3.25/aspect);gl_Position=vec4(P.x/(h*aspect),P.y/h,-P.z/12.,1.);}`;
   const fs=`precision highp float;varying vec3 N;varying vec3 P;
   float box(vec3 r,vec3 axis,float a,float b){return smoothstep(a,b,dot(r,normalize(axis)));}
   vec3 studio(vec3 r){
-   vec3 col=mix(vec3(.016,.02,.027),vec3(.18,.195,.22),smoothstep(-.8,.8,r.y));
-   col+=vec3(2.7,2.75,2.85)*box(r,vec3(-.8,1.,1.),.74,.92);
-   col+=vec3(1.7,1.8,2.)*box(r,vec3(1.,.4,.45),.91,.97);
-   col+=vec3(1.5)*box(r,vec3(-1.,-.65,-.2),.92,.985);
-   col+=vec3(.65,.7,.8)*box(r,vec3(.15,.8,-1.),.6,.88);
-   float band=exp(-pow((r.y+.16)/.048,2.));col+=vec3(1.2,1.25,1.3)*band;
-   float strip=exp(-pow((r.x-.48)/.045,2.))*smoothstep(-.5,-.2,r.y);col+=vec3(1.2)*strip;
+   vec3 col=mix(vec3(.003,.004,.006),vec3(.085,.092,.105),smoothstep(-.8,.8,r.y));
+   col+=vec3(5.8,5.9,6.)*box(r,vec3(-.8,1.,1.),.79,.90);
+   col+=vec3(4.2,4.4,4.7)*box(r,vec3(1.,.4,.45),.945,.98);
+   col+=vec3(3.5)*box(r,vec3(-1.,-.65,-.2),.92,.985);
+   col+=vec3(1.1,1.2,1.35)*box(r,vec3(.15,.8,-1.),.6,.88);
+   float band=exp(-pow((r.y+.16)/.026,2.));col+=vec3(3.2,3.3,3.45)*band;
+   float strip=exp(-pow((r.x-.48)/.025,2.))*smoothstep(-.5,-.2,r.y);col+=vec3(3.5)*strip;
    return col;
   }
-  void main(){vec3 n=normalize(N);vec3 v=normalize(vec3(0.,0.,6.)-P);vec3 r=reflect(-v,n);vec3 col=studio(r);float f=pow(1.-max(dot(n,v),0.),5.);col*=mix(.92,1.12,f);col=col/(col+vec3(.68));col=pow(col,vec3(1./2.2));gl_FragColor=vec4(col,1.);}`;
+  void main(){vec3 n=normalize(N);vec3 v=normalize(vec3(0.,0.,6.)-P);vec3 r=reflect(-v,n);vec3 col=studio(r);float f=pow(1.-max(dot(n,v),0.),5.);col*=mix(.92,1.12,f);col=col/(col+vec3(.5));col=pow(col,vec3(1./2.2));gl_FragColor=vec4(col,1.);}`;
   const shader=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
   const prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,vs));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));gl.useProgram(prog);
   const data=[];
-  const base=[[-.5,.5],[-.24,.5],[0,.14],[.24,.5],[.5,.5],[.17,0],[.5,-.5],[.24,-.5],[0,-.14],[-.24,-.5],[-.5,-.5],[-.17,0]].reverse();
-  function letter(cx,cy,w,h,d){
-   const pts=base.map(p=>[p[0]*w+cx,p[1]*h+cy]);const L=pts.length,b=.065;
+  // Individually traced from the supplied alpha contours; SOUND is excluded.
+  const letters=[{"outline":[[144.35,651.0],[304.874,445.953],[153.325,253.095],[279.825,252.953],[365.237,362.715],[451.566,253.052],[524.479,252.973],[554.098,293.205],[424.588,446.016],[522.994,569.642],[459.202,650.414],[364.454,529.984],[269.008,651.0]],"center":[365,446],"depth":0.72},{"outline":[[465.189,98.0],[635.089,98.0],[767.781,280.632],[903.214,97.919],[1070.9,98.168],[826.935,412.832],[1046.708,694.0],[899.674,694.0],[768.327,519.056],[628.424,694.0],[482.84,694.0],[704.324,412.295]],"center":[768,412],"depth":0.88},{"outline":[[980.924,293.593],[1011.934,253.0],[1085.459,253.0],[1171.044,362.885],[1257.755,253.0],[1384.148,253.0],[1228.849,445.606],[1390.181,651.0],[1264.044,651.0],[1170.325,532.122],[1073.322,650.625],[1009.302,569.969],[1109.575,448.414]],"center":[1170,446],"depth":0.72}];
+  const toWorld=p=>[(p[0]-767.3)*.00449,(396-p[1])*.00449];
+  function letter(outline,center,d){
+   const pts=outline.map(toWorld),[cx,cy]=toWorld(center);const L=pts.length,b=.035;
    const normals=pts.map((p,i)=>{const q=pts[(i+1)%L],dx=q[0]-p[0],dy=q[1]-p[1],l=Math.hypot(dx,dy);return [dy/l,-dx/l];});
    const bis=pts.map((p,i)=>{let a=normals[(i+L-1)%L],b=normals[i],x=a[0]+b[0],y=a[1]+b[1],den=x*b[0]+y*b[1];return [x/den,y/den];});
    const vertex=(i,inset,z,theta,sign)=>{const p=pts[i],q=bis[i],n=normals[i];return {p:[p[0]-inset*q[0],p[1]-inset*q[1],z],n:[q[0]*Math.cos(theta),q[1]*Math.cos(theta),sign*Math.sin(theta)]};};
@@ -42,11 +44,11 @@ class ChromeXXX extends HTMLElement {
    }
    for(let i=0;i<L;i++){const k=(i+1)%L,n=[...normals[i],0];let a={p:[...pts[i],-d/2+b],n},bb={p:[...pts[k],-d/2+b],n},c={p:[...pts[k],d/2-b],n},dd={p:[...pts[i],d/2-b],n};emit(a,bb,c);emit(a,c,dd);}
   }
-  letter(-1.93,-.20,1.72,1.96,.32);letter(0,.035,2.42,2.86,.40);letter(1.93,-.20,1.72,1.96,.32);
+  for(const item of letters)letter(item.outline,item.center,item.depth);
   const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);
   for(const [name,offset] of [['position',0],['normal',12]]){const loc=gl.getAttribLocation(prog,name);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,24,offset);}
   const au=gl.getUniformLocation(prog,'angle'),asu=gl.getUniformLocation(prog,'aspect');gl.enable(gl.DEPTH_TEST);gl.clearColor(0,0,0,0);
-  this.draw=(seconds)=>{const ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(this.clientWidth*ratio)),h=Math.max(1,Math.round(this.clientHeight*ratio));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}gl.viewport(0,0,w,h);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniform1f(au,-seconds*Math.PI*2/(Number(this.getAttribute('duration'))||18));gl.uniform1f(asu,w/h);gl.drawArrays(gl.TRIANGLES,0,data.length/6);};
+  this.draw=(seconds)=>{const ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(this.clientWidth*ratio)),h=Math.max(1,Math.round(this.clientHeight*ratio));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}gl.viewport(0,0,w,h);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniform1f(au,-seconds*Math.PI*2/(Number(this.getAttribute('duration'))||14));gl.uniform1f(asu,w/h);gl.drawArrays(gl.TRIANGLES,0,data.length/6);};
   const media=matchMedia('(prefers-reduced-motion: reduce)');let elapsed=0,previous=null;
   this.tick=t=>{if(previous!==null&&!document.hidden)elapsed+=(t-previous)/1000;previous=t;if(!this.hasAttribute('paused'))this.draw(media.matches?0:elapsed);this.frame=requestAnimationFrame(this.tick);};
   this.draw(0);this.frame=requestAnimationFrame(this.tick);
