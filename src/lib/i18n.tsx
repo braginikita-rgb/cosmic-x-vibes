@@ -50,6 +50,12 @@ const dict = {
     "merch.hoodie": "Худи",
     "merch.cap": "Кепка",
     "merch.tote": "Шоппер",
+    "merch.presale": "Предзаказ",
+    "merch.collection": "Eastern EU Tour 2026",
+    "merch.presaleTee": "Футболка Tour 26",
+    "merch.presaleHoodie": "Худи Tour 26",
+    "merch.front": "Спереди",
+    "merch.back": "Сзади",
 
     "social.tag": "Соцсети",
 
@@ -147,6 +153,12 @@ const dict = {
     "merch.hoodie": "Hoodie",
     "merch.cap": "Cap",
     "merch.tote": "Tote bag",
+    "merch.presale": "Presale",
+    "merch.collection": "Eastern EU Tour 2026",
+    "merch.presaleTee": "Tour 26 T-shirt",
+    "merch.presaleHoodie": "Tour 26 Hoodie",
+    "merch.front": "Front",
+    "merch.back": "Back",
 
     "social.tag": "Socials",
 
