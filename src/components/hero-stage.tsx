@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { useI18n, type TKey } from "@/lib/i18n";
 
 const quickLinks = [
@@ -7,27 +8,63 @@ const quickLinks = [
   { to: "/blog", key: "nav.blog" },
 ] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
+type NetworkInfo = { saveData?: boolean; effectiveType?: string };
+
+function shouldPlayVideo() {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  const connection = (navigator as Navigator & { connection?: NetworkInfo }).connection;
+  if (connection?.saveData) return false;
+  if (connection?.effectiveType && /2g/.test(connection.effectiveType)) return false;
+  return true;
+}
+
 export function HeroStage() {
   const { t } = useI18n();
+  const [showVideo, setShowVideo] = useState(false);
+
+  // The looped footage is the heaviest asset on the site. Paint the light
+  // still frame first, then attach the video after the page is interactive
+  // (and skip it entirely on data-saving or very slow connections).
+  useEffect(() => {
+    if (!shouldPlayVideo()) return;
+    const start = () => setShowVideo(true);
+    const idle = window.requestIdleCallback;
+    const id = idle ? idle(start) : window.setTimeout(start, 600);
+    return () => window.clearTimeout(id);
+  }, []);
+
 
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-foreground text-background">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        disablePictureInPicture
-        disableRemotePlayback
-        aria-label={t("hero.videoAlt")}
-        width={720}
-        height={1280}
+      <img
+        src="/media/hero-poster.webp"
+        alt={t("hero.videoAlt")}
+        width={540}
+        height={960}
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 size-full object-cover contrast-125 grayscale"
-      >
-        <source src="/media/concert-cut.webm" type="video/webm" />
-        <source src="/media/concert-cut.mp4" type="video/mp4" />
-      </video>
+      />
+
+      {showVideo ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          disablePictureInPicture
+          disableRemotePlayback
+          aria-hidden="true"
+          width={720}
+          height={1280}
+          className="absolute inset-0 size-full object-cover contrast-125 grayscale"
+        >
+          <source src="/media/concert-cut.webm" type="video/webm" />
+          <source src="/media/concert-cut.mp4" type="video/mp4" />
+        </video>
+      ) : null}
 
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/15 to-foreground/80" />
 
