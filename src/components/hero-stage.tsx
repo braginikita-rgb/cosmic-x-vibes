@@ -29,11 +29,11 @@ export function HeroStage() {
   useEffect(() => {
     if (!shouldPlayVideo()) return;
     const start = () => setShowVideo(true);
-    const idle = (window as Window & { requestIdleCallback?: typeof setTimeout })
-      .requestIdleCallback;
+    const idle = window.requestIdleCallback;
     const id = idle ? idle(start) : window.setTimeout(start, 600);
-    return () => window.clearTimeout(id as number);
+    return () => window.clearTimeout(id);
   }, []);
+
 
   return (
     <section className="relative isolate h-[100svh] w-full overflow-hidden bg-foreground text-background">
