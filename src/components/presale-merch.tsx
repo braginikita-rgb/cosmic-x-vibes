@@ -25,6 +25,10 @@ export function PresaleMerch({ compact = false }: PresaleMerchProps) {
           ) : undefined}
         </SectionHeading>
 
+        <h2 className="mt-6 max-w-5xl font-sans text-4xl font-black uppercase leading-[0.9] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+          {t("merch.tourTitle")}
+        </h2>
+
         <div className="mt-10 grid gap-x-5 gap-y-12 md:grid-cols-2">
           {presaleProducts.map((product) => (
             <article key={product.id}>
