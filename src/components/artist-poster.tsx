@@ -31,8 +31,7 @@ export function ArtistPoster() {
           </figure>
 
           <div>
-            <span className="label-tag text-[11px] text-accent">{t("poster.tag")}</span>
-            <h2 className="mt-5 font-mono text-4xl font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl">
+            <h2 className="font-mono text-4xl font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl">
               {t("poster.title")}
             </h2>
 
