@@ -20,7 +20,12 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      { rel: "preload", as: "image", href: "/media/hero-poster.webp", fetchpriority: "high" },
+      { rel: "prefetch", as: "document", href: "/media/chrome-xxx.html" },
+    ],
   }),
+
   component: Index,
 });
 
