@@ -8,6 +8,12 @@ const footerNav = [
   { to: "/contacts", key: "nav.contacts" },
 ] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
+const legalNav = [
+  { to: "/legal-notice", key: "footer.legalNotice" },
+  { to: "/privacy-policy", key: "footer.privacyPolicy" },
+  { to: "/faq", key: "footer.faq" },
+] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
+
 export function SiteFooter() {
   const { t } = useI18n();
 
@@ -25,7 +31,7 @@ export function SiteFooter() {
           <p className="mt-5 max-w-sm text-sm text-muted-foreground">{t("footer.about")}</p>
         </div>
 
-        <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               {t("footer.nav")}
@@ -52,6 +58,16 @@ export function SiteFooter() {
               info@xxxsoundxxx.com
             </a>
             <p className="text-sm text-muted-foreground">{t("footer.address")}</p>
+          </div>
+          <div className="space-y-3">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+              {t("footer.legal")}
+            </p>
+            {legalNav.map((link) => (
+              <Link key={link.to} to={link.to} className="block text-sm hover:text-accent">
+                {t(link.key)}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
