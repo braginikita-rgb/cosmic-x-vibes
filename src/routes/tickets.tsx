@@ -47,7 +47,7 @@ function Tickets() {
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>
                 </div>
-                <span className="bar-label bg-accent text-[10px] text-accent-foreground">
+                <span className="bar-label col-span-2 mt-1 justify-self-center bg-accent text-[10px] text-accent-foreground sm:col-span-1 sm:mt-0 sm:justify-self-auto">
                   {t("tickets.buy")}
                 </span>
               </>
