@@ -25,6 +25,9 @@ export function ArtistPoster() {
               loading="lazy"
               className="w-full object-cover"
             />
+            <figcaption className="absolute right-0 top-0 bg-accent px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-accent-foreground">
+              October 2026
+            </figcaption>
           </figure>
 
           <div>
