@@ -24,10 +24,10 @@ export function ArtistPoster() {
               className="w-full object-cover"
             />
             <img
-              src={logoWhite.url}
+              src="/media/xxx-white-small.webp"
               alt="xXx Sound"
-              width={120}
-              height={40}
+              width={200}
+              height={200}
               loading="lazy"
               decoding="async"
               className="absolute left-3 top-3 z-10 h-10 w-auto sm:h-14"
