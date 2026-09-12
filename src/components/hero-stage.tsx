@@ -73,7 +73,7 @@ export function HeroStage() {
         <div className="flex flex-1 flex-col items-center justify-center gap-8">
           <iframe
             src="/media/chrome-xxx.html"
-            title="Animated chrome XXX"
+            title="Animated diamond XXX"
             className="pointer-events-none aspect-[3/2] w-[92vw] max-w-5xl border-0 bg-transparent drop-shadow-[0_30px_80px_oklch(0_0_0_/_55%)]"
             loading="eager"
             sandbox="allow-scripts"

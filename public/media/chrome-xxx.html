@@ -1,30 +1,31 @@
-<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Red Chrome XXX</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}red-chrome-xxx{width:100%;height:100%}</style><red-chrome-xxx duration="14"></red-chrome-xxx><script>/* Red Chrome XXX — original WebGL geometry, no dependencies or network requests. */
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diamond XXX</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}diamond-xxx{width:100%;height:100%}</style><diamond-xxx duration="14"></diamond-xxx><script>/* Diamond XXX — original WebGL geometry, no dependencies or network requests. */
 (() => {
 'use strict';
-class RedChromeXXX extends HTMLElement {
+class DiamondXXX extends HTMLElement {
  connectedCallback() {
   if(this.canvas){this.frame=requestAnimationFrame(this.tick);return;}
   const root=this.attachShadow({mode:'open'});
-  root.innerHTML=`<style>:host{display:block;width:100%;aspect-ratio:3/2}canvas{width:100%;height:100%;display:block}</style><canvas role="img" aria-label="Three rotating red chrome X letters"></canvas>`;
+  root.innerHTML=`<style>:host{display:block;width:100%;aspect-ratio:3/2}canvas{width:100%;height:100%;display:block}</style><canvas role="img" aria-label="Rotating XXX diamond pavé pendant"></canvas>`;
   this.canvas=root.querySelector('canvas');
-  const gl=this.canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:false,preserveDrawingBuffer:true});
-  if(!gl){root.innerHTML='<span style="font:bold 100px sans-serif;color:#d90920">XXX</span>';return;}
+  const gl=this.canvas.getContext('webgl',{alpha:true,antialias:true,premultipliedAlpha:true,preserveDrawingBuffer:true});
+  if(!gl){root.innerHTML='<span style="font:bold 100px sans-serif;color:silver">XXX</span>';return;}
   this.gl=gl;
-  const vs=`attribute vec3 position;attribute vec3 normal;uniform float angle;uniform float aspect;varying vec3 N;varying vec3 P;
-  void main(){float c=cos(angle),s=sin(angle);mat3 ry=mat3(c,0.,-s,0.,1.,0.,s,0.,c);float t=0.;mat3 rx=mat3(1.,0.,0.,0.,cos(t),sin(t),0.,-sin(t),cos(t));P=rx*ry*position;N=rx*ry*normal;float h=max(2.15,3.25/aspect);gl_Position=vec4(P.x/(h*aspect),P.y/h,-P.z/12.,1.);}`;
-  const fs=`precision highp float;varying vec3 N;varying vec3 P;
-  float box(vec3 r,vec3 axis,float a,float b){return smoothstep(a,b,dot(r,normalize(axis)));}
-  vec3 studio(vec3 r){
-   vec3 col=mix(vec3(.003,.004,.006),vec3(.085,.092,.105),smoothstep(-.8,.8,r.y));
-   col+=vec3(5.8,5.9,6.)*box(r,vec3(-.8,1.,1.),.79,.90);
-   col+=vec3(4.2,4.4,4.7)*box(r,vec3(1.,.4,.45),.945,.98);
-   col+=vec3(3.5)*box(r,vec3(-1.,-.65,-.2),.92,.985);
-   col+=vec3(1.1,1.2,1.35)*box(r,vec3(.15,.8,-1.),.6,.88);
-   float band=exp(-pow((r.y+.16)/.026,2.));col+=vec3(3.2,3.3,3.45)*band;
-   float strip=exp(-pow((r.x-.48)/.025,2.))*smoothstep(-.5,-.2,r.y);col+=vec3(3.5)*strip;
-   return col;
-  }
-  void main(){vec3 n=normalize(N);vec3 v=normalize(vec3(0.,0.,6.)-P);vec3 r=reflect(-v,n);vec3 env=studio(r);float f=pow(1.-max(dot(n,v),0.),5.);vec3 col=env*mix(vec3(1.18,.009,.018),vec3(1.),f*.75);col+=max(env-vec3(2.1),vec3(0.))*.14;col*=mix(.92,1.12,f);col=col/(col+vec3(.5));col=pow(col,vec3(1./2.2));gl_FragColor=vec4(col,1.);}`;
+  const vs=`attribute vec3 position;attribute vec3 normal;attribute float material;attribute float seed;uniform float angle;uniform float aspect;varying vec3 N;varying vec3 P;varying float M;varying float S;varying vec2 UV;varying float flash;varying vec3 flareColor;
+vec3 prism(vec3 ray,vec3 light){vec3 tangent=normalize(cross(light,vec3(0.,1.,0.)));vec3 dots=vec3(dot(normalize(ray+tangent*.044),light),dot(ray,light),dot(normalize(ray-tangent*.044),light));return pow(max(dots,vec3(0.)),vec3(420.));}
+void main(){float c=cos(angle),s=sin(angle);mat3 ry=mat3(c,0.,-s,0.,1.,0.,s,0.,c);P=ry*position;N=ry*normal;M=material;S=seed;UV=normal.xy;flash=0.;flareColor=vec3(1.);float h=max(2.15,3.25/aspect);gl_Position=vec4(P.x/(h*aspect),P.y/h,-P.z/12.,1.);
+if(material>2.5){vec3 gn=normalize(ry*vec3(.30*sin(seed*173.),.30*cos(seed*137.),normal.z));vec3 v=normalize(vec3(0.,0.,6.)-P);vec3 r=reflect(-v,gn);float a=pow(max(dot(r,normalize(vec3(-.6,.8,1.4))),0.),270.);float b=pow(max(dot(r,normalize(vec3(.7,-.3,1.2))),0.),390.);float c3=.55*pow(max(dot(r,normalize(vec3(-.4,-.7,1.3))),0.),340.);flash=min(1.,(a+b+c3)*2.6)*smoothstep(.15,.45,dot(ry*vec3(0.,0.,normal.z),v));vec3 spectrum=prism(r,normalize(vec3(-.6,.8,1.4)))+prism(r,normalize(vec3(.7,-.3,1.2)))+prism(r,normalize(vec3(-.4,-.7,1.3)));float peak=max(spectrum.r,max(spectrum.g,spectrum.b));flareColor=mix(vec3(1.),spectrum/max(peak,.001),.72*smoothstep(.001,.06,peak));float size=.17+.085*seed;gl_Position.xy+=normal.xy*vec2(size/(h*aspect),size/h);gl_Position.z-=.0003;}}
+`;
+  const fs=`precision highp float;varying vec3 N;varying vec3 P;varying float M;varying float S;varying vec2 UV;varying float flash;varying vec3 flareColor;
+float box(vec3 r,vec3 axis,float a,float b){return smoothstep(a,b,dot(r,normalize(axis)));}
+vec3 studio(vec3 r){vec3 col=mix(vec3(.012,.014,.018),vec3(.24,.25,.27),smoothstep(-.8,.8,r.y));col+=vec3(3.8)*box(r,vec3(-.8,1.,1.),.81,.94);col+=vec3(3.5,3.65,3.9)*box(r,vec3(1.,.4,.45),.93,.98);col+=vec3(2.9,2.75,2.6)*box(r,vec3(-1.,-.65,-.2),.93,.986);col+=vec3(1.4)*box(r,vec3(.15,.8,-1.),.74,.90);col+=vec3(2.2)*exp(-pow((r.y+.16)/.027,2.));return col;}
+float spots(vec3 r){return 26.*pow(max(dot(r,normalize(vec3(-.6,.8,1.4))),0.),950.)+22.*pow(max(dot(r,normalize(vec3(.7,-.3,1.2))),0.),1100.);}
+vec3 prism(vec3 ray,vec3 light){vec3 tangent=normalize(cross(light,vec3(0.,1.,0.)));vec3 dots=vec3(dot(normalize(ray+tangent*.044),light),dot(ray,light),dot(normalize(ray-tangent*.044),light));return pow(max(dots,vec3(0.)),vec3(420.));}
+void main(){if(M>2.5){float core=exp(-dot(UV,UV)*100.);float arms=exp(-abs(UV.x)*42.-abs(UV.y)*2.9)+exp(-abs(UV.y)*42.-abs(UV.x)*2.9);float halo=exp(-dot(UV,UV)*16.)*.10;float a=min(.99,(core+arms*.90+halo)*flash);if(a<.008)discard;vec3 tint=mix(flareColor,vec3(1.),exp(-dot(UV,UV)*140.));gl_FragColor=vec4(tint*a,a);return;}
+vec3 n=normalize(N);vec3 v=normalize(vec3(0.,0.,6.)-P);vec3 r=reflect(-v,n);float f=pow(1.-max(dot(n,v),0.),5.);vec3 col;
+if(M>.5 && M<1.5){vec3 ray=refract(-v,n,.4132);vec3 internal=reflect(ray,normalize(n+vec3(.75*sin(S*83.),.65*cos(S*119.),.35)));vec3 glass=studio(internal);float shift=.070;vec3 dispersion=vec3(studio(normalize(internal+vec3(shift,0.,0.))).r,glass.g,studio(normalize(internal-vec3(shift,0.,0.))).b);col=studio(r)*(.18+.65*f)+dispersion*(.5+.65*fract(S*37.));vec3 fire=prism(internal,normalize(vec3(-.6,.8,1.4)))+prism(internal,normalize(vec3(.7,-.3,1.2)))+prism(r,normalize(vec3(-.4,-.7,1.3)))*.7;float strength=max(fire.r,max(fire.g,fire.b));col*=1.-.85*smoothstep(.01,.25,strength);col+=fire*18.;col+=vec3(spots(r)*.58);col+=vec3(.025,.029,.038);}
+else{col=studio(r)*vec3(.96,.97,1.)*.58;col+=vec3(spots(r)*.08);}
+col=col/(col+vec3(.48));col=pow(col,vec3(1./2.2));gl_FragColor=vec4(col,1.);}
+`;
   const shader=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
   const prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,vs));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));gl.useProgram(prog);
   const data=[];
@@ -32,11 +33,11 @@ class RedChromeXXX extends HTMLElement {
   const letters=[{"outline":[[144.35,651.0],[304.874,445.953],[153.325,253.095],[279.825,252.953],[365.237,362.715],[451.566,253.052],[524.479,252.973],[554.098,293.205],[424.588,446.016],[522.994,569.642],[459.202,650.414],[364.454,529.984],[269.008,651.0]],"center":[365,446],"depth":0.72},{"outline":[[465.189,98.0],[635.089,98.0],[767.781,280.632],[903.214,97.919],[1070.9,98.168],[826.935,412.832],[1046.708,694.0],[899.674,694.0],[768.327,519.056],[628.424,694.0],[482.84,694.0],[704.324,412.295]],"center":[768,412],"depth":0.88},{"outline":[[980.924,293.593],[1011.934,253.0],[1085.459,253.0],[1171.044,362.885],[1257.755,253.0],[1384.148,253.0],[1228.849,445.606],[1390.181,651.0],[1264.044,651.0],[1170.325,532.122],[1073.322,650.625],[1009.302,569.969],[1109.575,448.414]],"center":[1170,446],"depth":0.72}];
   const toWorld=p=>[(p[0]-767.3)*.00449,(396-p[1])*.00449];
   function letter(outline,center,d){
-   const pts=outline.map(toWorld),[cx,cy]=toWorld(center);const L=pts.length,b=.035;
+   const pts=outline.map(toWorld).reverse(),[cx,cy]=toWorld(center);const L=pts.length,b=.035;
    const normals=pts.map((p,i)=>{const q=pts[(i+1)%L],dx=q[0]-p[0],dy=q[1]-p[1],l=Math.hypot(dx,dy);return [dy/l,-dx/l];});
    const bis=pts.map((p,i)=>{let a=normals[(i+L-1)%L],b=normals[i],x=a[0]+b[0],y=a[1]+b[1],den=x*b[0]+y*b[1];return [x/den,y/den];});
    const vertex=(i,inset,z,theta,sign)=>{const p=pts[i],q=bis[i],n=normals[i];return {p:[p[0]-inset*q[0],p[1]-inset*q[1],z],n:[q[0]*Math.cos(theta),q[1]*Math.cos(theta),sign*Math.sin(theta)]};};
-   const emit=(a,b,c)=>{for(const v of [a,b,c])data.push(...v.p,...v.n);};
+   const emit=(a,b,c)=>{for(const v of [a,b,c])data.push(...v.p,...v.n,0,0);};
    for(const sign of [1,-1]){
     const rings=[];for(let j=0;j<=5;j++){const t=j/5*Math.PI/2;rings.push(pts.map((p,i)=>vertex(i,b*(1-Math.cos(t)),sign*(d/2-b+b*Math.sin(t)),t,sign)));}
     for(let j=0;j<5;j++)for(let i=0;i<L;i++){let k=(i+1)%L;emit(rings[j][i],rings[j][k],rings[j+1][k]);emit(rings[j][i],rings[j+1][k],rings[j+1][i]);}
@@ -45,16 +46,38 @@ class RedChromeXXX extends HTMLElement {
    for(let i=0;i<L;i++){const k=(i+1)%L,n=[...normals[i],0];let a={p:[...pts[i],-d/2+b],n},bb={p:[...pts[k],-d/2+b],n},c={p:[...pts[k],d/2-b],n},dd={p:[...pts[i],d/2-b],n};emit(a,bb,c);emit(a,c,dd);}
   }
   for(const item of letters)letter(item.outline,item.center,item.depth);
-  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);
-  for(const [name,offset] of [['position',0],['normal',12]]){const loc=gl.getAttribLocation(prog,name);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,24,offset);}
-  const au=gl.getUniformLocation(prog,'angle'),asu=gl.getUniformLocation(prog,'aspect');gl.enable(gl.DEPTH_TEST);gl.clearColor(0,0,0,0);
-  this.draw=(seconds)=>{const ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(this.clientWidth*ratio)),h=Math.max(1,Math.round(this.clientHeight*ratio));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}gl.viewport(0,0,w,h);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniform1f(au,-seconds*Math.PI*2/(Number(this.getAttribute('duration'))||14));gl.uniform1f(asu,w/h);gl.drawArrays(gl.TRIANGLES,0,data.length/6);};
+
+  const glints=[];let stoneCount=0;
+  const hash=x=>{const t=Math.sin(x*127.1+311.7)*43758.5453;return t-Math.floor(t);};
+  const emitTri=(a,b,c,mat,seed)=>{const u=b.map((v,i)=>v-a[i]),v=c.map((v,i)=>v-a[i]);let n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]],len=Math.hypot(...n);n=n.map(x=>x/len);for(const p of [a,b,c])data.push(...p,...n,mat,seed);};
+  const inside=(x,y,pts)=>{let on=false;for(let i=0,j=pts.length-1;i<pts.length;j=i++){const a=pts[i],b=pts[j];if((a[1]>y)!=(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])on=!on;}return on;};
+  const distance=(x,y,pts)=>Math.min(...pts.map((a,i)=>{const b=pts[(i+1)%pts.length],dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy);}));
+  function stone(center,U,V,W,r,seed,faceSign){
+   stoneCount++;const rot=seed*Math.PI*2;const pos=(x,y,z)=>center.map((p,i)=>p+x*U[i]+y*V[i]+z*W[i]);
+   const rings=[[r*.49,.020,8],[r*.80,.011,16],[r,.002,16]].map(([rad,z,num])=>Array.from({length:num},(_,i)=>pos(rad*Math.cos(i/num*Math.PI*2+rot),rad*Math.sin(i/num*Math.PI*2+rot),z)));
+   const table=pos(0,0,.020);for(let i=0;i<8;i++)emitTri(table,rings[0][i],rings[0][(i+1)%8],1,seed+i*.0131);
+   for(let i=0;i<8;i++){const k=i*2;emitTri(rings[0][i],rings[1][k],rings[1][(k+1)%16],1,seed);emitTri(rings[0][i],rings[1][(k+1)%16],rings[0][(i+1)%8],1,seed+i*.0131);emitTri(rings[0][(i+1)%8],rings[1][(k+1)%16],rings[1][(k+2)%16],1,seed);}
+   for(let i=0;i<16;i++){const k=(i+1)%16;emitTri(rings[1][i],rings[2][i],rings[2][k],1,seed);emitTri(rings[1][i],rings[2][k],rings[1][k],1,seed);}
+   // Three tiny shared-looking bead prongs hold each round brilliant.
+   for(let j=0;j<3;j++){const t=rot+j*Math.PI*2/3,px=Math.cos(t)*r*.97,py=Math.sin(t)*r*.97;const top=pos(px,py,.018);for(let k=0;k<6;k++){const a=k*Math.PI/3,b=(k+1)*Math.PI/3;emitTri(top,pos(px+.0055*Math.cos(a),py+.0055*Math.sin(a),.003),pos(px+.0055*Math.cos(b),py+.0055*Math.sin(b),.003),2,seed);}}
+   if(faceSign && seed<.50){const c=pos(0,0,.030);for(const xy of [[-1,-1],[1,-1],[1,1],[-1,-1],[1,1],[-1,1]])glints.push(...c,...xy,faceSign,3,seed);}
+  }
+  for(const item of letters){const p=item.outline.map(toWorld).reverse();let row=0;const step=.079,r=.038;let minX=Math.min(...p.map(v=>v[0])),maxX=Math.max(...p.map(v=>v[0])),minY=Math.min(...p.map(v=>v[1])),maxY=Math.max(...p.map(v=>v[1]));
+   for(let y=minY+.07;y<maxY;y+=step*.866,row++)for(let x=minX+.04+(row%2)*step/2;x<maxX;x+=step){if(!inside(x,y,p)||distance(x,y,p)<r+.018)continue;const seed=hash(x*57.1+y*39.3);for(const sign of [1,-1])stone([x,y,sign*(item.depth/2-.003)],[1,0,0],[0,sign,0],[0,0,sign],r,seed,sign);}
+   // A pair of pavé rows follows each sidewall; the broad centre stays polished.
+   for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy),U=[dx/len,dy/len,0],W=[dy/len,-dx/len,0],V=[0,0,1];for(let t=.075;t<len-.075;t+=.103)for(const sign of [-1,1])stone([a[0]+U[0]*t+W[0]*.001,a[1]+U[1]*t+W[1]*.001,sign*(item.depth/2-.11)],U,V,W,.037,hash(t*87+i*61+item.depth*69),0);}
+  }
+  data.push(...glints);
+  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);const vertexCount=data.length/8;data.length=0;
+  for(const [name,offset] of [['position',0],['normal',12],['material',24],['seed',28]]){const loc=gl.getAttribLocation(prog,name);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,offset<24?3:1,gl.FLOAT,false,32,offset);}
+  const au=gl.getUniformLocation(prog,'angle'),asu=gl.getUniformLocation(prog,'aspect');gl.enable(gl.DEPTH_TEST);gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.clearColor(0,0,0,0);
+  this.draw=(seconds)=>{const ratio=Math.min(devicePixelRatio||1,2),w=Math.max(1,Math.round(this.clientWidth*ratio)),h=Math.max(1,Math.round(this.clientHeight*ratio));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}gl.viewport(0,0,w,h);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniform1f(au,-seconds*Math.PI*2/(Number(this.getAttribute('duration'))||14));gl.uniform1f(asu,w/h);gl.drawArrays(gl.TRIANGLES,0,vertexCount);};
   const media=matchMedia('(prefers-reduced-motion: reduce)');let elapsed=0,previous=null;
   this.tick=t=>{if(previous!==null&&!document.hidden)elapsed+=(t-previous)/1000;previous=t;if(!this.hasAttribute('paused'))this.draw(media.matches?0:elapsed);this.frame=requestAnimationFrame(this.tick);};
   this.draw(0);this.frame=requestAnimationFrame(this.tick);
  }
  disconnectedCallback(){cancelAnimationFrame(this.frame);}
 }
-if(!customElements.get('red-chrome-xxx'))customElements.define('red-chrome-xxx',RedChromeXXX);
+if(!customElements.get('diamond-xxx'))customElements.define('diamond-xxx',DiamondXXX);
 })();
 </script></html>
