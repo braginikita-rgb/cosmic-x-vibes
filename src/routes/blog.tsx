@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -195,12 +195,12 @@ function Blog() {
               <br />Prague
               <br />Chișinău
             </p>
-            <a
-              href="/tickets"
-              className="mt-8 inline-flex bg-background px-6 py-4 font-mono text-xs font-bold uppercase tracking-[0.22em] text-foreground transition-opacity hover:opacity-80"
+            <Button
+              asChild
+              className="mt-8 h-auto rounded-none bg-background px-6 py-4 font-mono text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-none hover:bg-background/80"
             >
-              {copy.tickets}
-            </a>
+              <Link to="/tickets">{copy.tickets}</Link>
+            </Button>
           </div>
         </div>
       </section>
