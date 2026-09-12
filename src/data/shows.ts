@@ -34,7 +34,7 @@ export const upcoming: Show[] = [
     title: "The Limba",
     city: "Прага",
     venue: "ROXY CLUB",
-    address: "Francouzská 75/4, 120 00, Praha 2 - Vinohrady",
+    address: "Dlouhá 33, 110 00 Old Town, Prague 1",
   },
   {
     id: "4",
