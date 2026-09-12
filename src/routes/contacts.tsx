@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useI18n, type TKey } from "@/lib/i18n";
 
 export const Route = createFileRoute("/contacts")({
@@ -25,12 +25,6 @@ const rows = [
     key: "contacts.mail",
     value: "info@xxxsoundxxx.com",
     href: "mailto:info@xxxsoundxxx.com",
-  },
-  {
-    Icon: Phone,
-    key: "contacts.phone",
-    value: "+4915110926173",
-    href: "tel:+4915110926173",
   },
   { Icon: MapPin, key: "contacts.office", addressKey: "footer.address" },
 ] as const satisfies ReadonlyArray<{ key: TKey } & Record<string, unknown>>;

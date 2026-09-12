@@ -43,9 +43,6 @@ export function SiteFooter() {
             <a href="mailto:info@xxxsoundxxx.com" className="block text-sm hover:text-accent">
               info@xxxsoundxxx.com
             </a>
-            <a href="tel:+4915110926173" className="block text-sm hover:text-accent">
-              +4915110926173
-            </a>
           </div>
           <div className="space-y-3">
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
