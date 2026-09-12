@@ -11,6 +11,7 @@ const footerNav = [
 const legalNav = [
   { to: "/legal-notice", key: "footer.legalNotice" },
   { to: "/privacy-policy", key: "footer.privacyPolicy" },
+  { to: "/refund-policy", key: "footer.refundPolicy" },
   { to: "/faq", key: "footer.faq" },
 ] as const satisfies ReadonlyArray<{ to: string; key: TKey }>;
 
