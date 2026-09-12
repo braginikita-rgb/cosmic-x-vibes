@@ -41,7 +41,7 @@ export const upcoming: Show[] = [
     date: "07.11",
     day: "СБ",
     title: "The Limba",
-    city: "Кишинёв",
+    city: "Кишинев",
     venue: "SKAL",
     address: "Strada 31 August 1989 117, Chișinău",
   },
