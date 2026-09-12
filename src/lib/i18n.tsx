@@ -104,6 +104,7 @@ const dict = {
     "day.ВС": "ВС",
     "day.СР": "СР",
     "day.ПТ": "ПТ",
+    "day.ЧТ": "ЧТ",
 
     "price.from": "от",
   },
@@ -200,6 +201,7 @@ const dict = {
     "day.ВС": "SUN",
     "day.СР": "WED",
     "day.ПТ": "FRI",
+    "day.ЧТ": "THU",
 
     "price.from": "from",
   },
