@@ -60,12 +60,12 @@ function Tickets() {
                     href={show.ticketUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="grid gap-5 border-b border-border py-7 transition-colors hover:bg-accent/5 sm:grid-cols-[120px_1fr_auto] sm:items-center"
+                    className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 transition-colors hover:bg-accent/5 sm:grid-cols-[120px_1fr_auto] sm:items-center"
                   >
                     {content}
                   </a>
                 ) : (
-                  <div className="grid gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center">
+                  <div className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center">
                     {content}
                   </div>
                 )}
