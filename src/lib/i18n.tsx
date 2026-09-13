@@ -57,6 +57,7 @@ const dict = {
     "merch.presaleHoodie": "Худи Tour 26",
     "merch.front": "Спереди",
     "merch.back": "Сзади",
+    "merch.buy": "Купить",
 
     "social.tag": "Соцсети",
 
@@ -183,6 +184,7 @@ const dict = {
     "merch.presaleHoodie": "Tour 26 Hoodie",
     "merch.front": "Front",
     "merch.back": "Back",
+    "merch.buy": "Buy",
 
     "social.tag": "Socials",
 

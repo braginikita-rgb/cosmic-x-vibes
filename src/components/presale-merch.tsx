@@ -46,21 +46,31 @@ export function PresaleMerch({ compact = false }: PresaleMerchProps) {
                 />
               </figure>
 
-              <div className="mt-5 flex items-end justify-between gap-5 border-b border-foreground pb-5">
-                <div>
-                  <p className="inline-flex items-center gap-2 rounded-sm bg-accent px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-                      <span className="relative inline-flex size-2 rounded-full bg-white" />
-                    </span>
-                    {t("merch.presale")}
+              <div className="mt-5 border-b border-foreground pb-5">
+                <div className="flex items-end justify-between gap-5">
+                  <div>
+                    <p className="inline-flex items-center gap-2 rounded-sm bg-accent px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white">
+                      <span className="relative flex size-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+                        <span className="relative inline-flex size-2 rounded-full bg-white" />
+                      </span>
+                      {t("merch.presale")}
+                    </p>
+                    <h3 className="mt-3 text-xl leading-tight sm:text-2xl">{t(product.nameKey)}</h3>
+                  </div>
+                  <p className="shrink-0 font-mono font-bold" aria-label={`${product.currentPrice} euro`}>
+                    <span className="mr-2 text-sm text-muted-foreground line-through">€{product.previousPrice}</span>
+                    <span className="text-3xl text-accent">€{product.currentPrice}</span>
                   </p>
-                  <h3 className="mt-3 text-xl leading-tight sm:text-2xl">{t(product.nameKey)}</h3>
                 </div>
-                <p className="shrink-0 font-mono font-bold" aria-label={`${product.currentPrice} euro`}>
-                  <span className="mr-2 text-sm text-muted-foreground line-through">€{product.previousPrice}</span>
-                  <span className="text-3xl text-accent">€{product.currentPrice}</span>
-                </p>
+                <a
+                  href={product.buyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 flex w-full items-center justify-center bg-accent px-5 py-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white transition-colors hover:bg-accent/90"
+                >
+                  {t("merch.buy")}
+                </a>
               </div>
             </article>
           ))}
