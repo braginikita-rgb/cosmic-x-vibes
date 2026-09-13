@@ -4,6 +4,7 @@ export type MerchProduct = {
   currentPrice: number;
   previousPrice: number;
   image: string;
+  buyUrl: string;
 };
 
 export const presaleProducts: ReadonlyArray<MerchProduct> = [
@@ -13,6 +14,7 @@ export const presaleProducts: ReadonlyArray<MerchProduct> = [
     currentPrice: 35,
     previousPrice: 50,
     image: "/media/presale-tee.webp",
+    buyUrl: "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-4f0d3e/merch",
   },
   {
     id: "eastern-eu-tour-hoodie",
@@ -20,5 +22,6 @@ export const presaleProducts: ReadonlyArray<MerchProduct> = [
     currentPrice: 75,
     previousPrice: 90,
     image: "/media/presale-hoodie.webp",
+    buyUrl: "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-4f0d3e/merch",
   },
 ];
