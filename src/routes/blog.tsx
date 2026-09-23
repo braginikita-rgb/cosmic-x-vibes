@@ -118,7 +118,7 @@ function Blog() {
                 >
                   <p>
                     The tour starts on October 21 in Warsaw at Proxima, followed by shows in
-                    Riga on October 23 and Prague on October 29.
+                    Riga on October 23 and Prague on October 25.
                   </p>
                   <p>The final date of the run takes place in Chișinău on November 7.</p>
                   <p>
