@@ -34,8 +34,8 @@ export const upcoming: Show[] = [
   },
   {
     id: "3",
-    date: "29.10",
-    day: "ЧТ",
+    date: "25.10",
+    day: "ВС",
     title: "The Limba",
     city: "Прага",
     venue: "ROXY CLUB",
