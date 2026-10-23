@@ -9,12 +9,12 @@ export const Route = createFileRoute("/tickets")({
       { title: "Билеты на концерты — xXx Sound" },
       {
         name: "description",
-        content: "Все даты и билеты на концерты xXx Sound: города, залы и цены.",
+        content: "Новые даты концертов The Limba: 23 апреля 2027 Варшава, 24 апреля Прага OX CLUB, 25 апреля Рига FIRST CLUB, 28 апреля Кишинёв.",
       },
       { property: "og:title", content: "Билеты на концерты — xXx Sound" },
       {
         property: "og:description",
-        content: "Расписание концертов xXx Sound и покупка билетов.",
+        content: "The Limba — концерты перенесены на 23–28 апреля 2027. Новые даты, площадки и билеты.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

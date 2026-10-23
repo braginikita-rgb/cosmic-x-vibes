@@ -36,7 +36,7 @@ const dict = {
 
     "poster.tag": "Афиша",
     "poster.title": "Города и даты",
-    "poster.alt": "Афиша тура The Limba",
+    "poster.alt": "The Limba — перенос концертов по техническим причинам",
     "poster.buy": "Купить билеты",
 
     "ann.tag": "Анонсы",
@@ -93,7 +93,7 @@ const dict = {
     "tickets.tag": "Расписание",
     "tickets.title": "Билеты",
     "tickets.lead": "Выбирайте дату — и до встречи в зале. Количество билетов ограничено.",
-    "tickets.season": "Сезон 2025/26",
+    "tickets.season": "Апрель 2027",
     "tickets.all": "Все даты",
     "tickets.buy": "Купить",
 
@@ -163,7 +163,7 @@ const dict = {
 
     "poster.tag": "Poster",
     "poster.title": "Cities & dates",
-    "poster.alt": "The Limba tour poster",
+    "poster.alt": "The Limba — concerts postponed for technical reasons",
     "poster.buy": "Buy tickets",
 
     "ann.tag": "Announcements",
@@ -220,7 +220,7 @@ const dict = {
     "tickets.tag": "Schedule",
     "tickets.title": "Tickets",
     "tickets.lead": "Pick a date and see you in the room. Ticket amount is limited.",
-    "tickets.season": "Season 2025/26",
+    "tickets.season": "April 2027",
     "tickets.all": "All dates",
     "tickets.buy": "Buy",
 
