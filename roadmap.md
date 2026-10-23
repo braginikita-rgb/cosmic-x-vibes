@@ -1,5 +1,9 @@
 # Roadmap
 
+- [ ] Update tour poster and April dates/venues everywhere
+- [ ] Add bilingual postponement blog announcement dated October 18, 2026
+- [ ] Verify schedule rules and public pages
+
 - [x] Add Legal Notice page from the supplied document
 - [x] Add Privacy Policy page from the supplied document
 - [x] Add bilingual FAQ page
