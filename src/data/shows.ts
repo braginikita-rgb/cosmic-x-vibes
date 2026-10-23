@@ -1,6 +1,7 @@
 export type Show = {
   id: string;
   date: string;
+  year: number;
   day: string;
   title: string;
   city: string;
@@ -12,8 +13,9 @@ export type Show = {
 export const upcoming: Show[] = [
   {
     id: "1",
-    date: "21.10",
-    day: "СР",
+    date: "23.04",
+    year: 2027,
+    day: "ПТ",
     title: "The Limba",
     city: "Варшава",
     venue: "PROXIMA",
@@ -23,30 +25,33 @@ export const upcoming: Show[] = [
   },
   {
     id: "2",
-    date: "23.10",
-    day: "ПТ",
+    date: "25.04",
+    year: 2027,
+    day: "ВС",
     title: "The Limba",
     city: "Рига",
-    venue: "The Tower",
-    address: "Brīvības gat. 214B, Vidzemes priekšpilsēta, Rīga, LV-1039",
+    venue: "FIRST CLUB",
+    address: "",
     ticketUrl:
       "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-d5add0?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-d5add0",
   },
   {
     id: "3",
-    date: "25.10",
-    day: "ВС",
+    date: "24.04",
+    year: 2027,
+    day: "СБ",
     title: "The Limba",
     city: "Прага",
-    venue: "ROXY CLUB",
-    address: "Dlouhá 33, 110 00 Old Town, Prague 1",
+    venue: "OX CLUB",
+    address: "",
     ticketUrl:
       "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-61b8d7?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-61b8d7",
   },
   {
     id: "4",
-    date: "07.11",
-    day: "СБ",
+    date: "28.04",
+    year: 2027,
+    day: "СР",
     title: "The Limba",
     city: "Кишинев",
     venue: "SKAL",
@@ -54,4 +59,4 @@ export const upcoming: Show[] = [
     ticketUrl:
       "https://music.sphere.art/music/concerts/the-limba-eastern-europe-tour-4f0d3e?utm_source=instagram&utm_medium=paid&utm_campaign=the-limba-eastern-europe-tour-4f0d3e",
   },
-];
+].sort((a, b) => a.date.localeCompare(b.date));

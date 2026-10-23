@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { upcoming } from "@/data/shows";
 import { useDataText, useI18n } from "@/lib/i18n";
+import poster from "@/assets/the-limba-postponement.webp.asset.json";
+import smallPoster from "@/assets/the-limba-postponement-400.webp.asset.json";
 
 export function ArtistPoster() {
   const { t } = useI18n();
@@ -13,13 +15,13 @@ export function ArtistPoster() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16">
           <figure className="relative">
             <img
-              src="/media/the-limba-tour-2026.webp"
-              srcSet="/media/the-limba-tour-2026-400.webp 400w, /media/the-limba-tour-2026.webp 640w"
+              src={poster.url}
+              srcSet={`${smallPoster.url} 400w, ${poster.url} 768w`}
               sizes="(max-width: 1024px) 100vw, 45vw"
               decoding="async"
-              alt="The Limba — Eastern EU Tour 26"
-              width={640}
-              height={800}
+              alt={t("poster.alt")}
+              width={768}
+              height={957}
               loading="lazy"
               className="w-full object-cover"
             />
@@ -33,7 +35,7 @@ export function ArtistPoster() {
               className="absolute left-3 top-3 z-10 h-10 w-auto sm:h-14"
             />
             <figcaption className="absolute right-0 top-0 bg-accent px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-accent-foreground">
-              October 2026
+              {t("tickets.season")}
             </figcaption>
           </figure>
 
