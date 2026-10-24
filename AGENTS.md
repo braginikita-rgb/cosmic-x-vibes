@@ -11,4 +11,4 @@
 
 - Keep active tour dates and venues in `src/data/shows.ts` and reuse them in the blog and concert listings so reschedules stay consistent.
 - Store newly supplied app media as Lovable Assets pointers and use responsive variants to keep page downloads small.
-- Bundle all SSR dependencies with `ssr.noExternal: true` because the published Worker cannot resolve npm packages at runtime.
+- Bundle all SSR dependencies with `ssr.noExternal: true` during builds because the published Worker cannot resolve npm packages at runtime; leave development resolution to Vite so CommonJS dependencies work in preview.
