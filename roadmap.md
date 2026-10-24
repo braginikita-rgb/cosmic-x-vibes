@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Correct SSR dependency bundling and verify the publication error
+
 - [x] Update tour poster and April dates/venues everywhere
 - [x] Add bilingual postponement blog announcement dated October 18, 2026
 - [x] Verify schedule rules and public pages

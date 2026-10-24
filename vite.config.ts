@@ -8,6 +8,9 @@ export default defineConfig({
     tsconfigPaths: true,
     dedupe: ["react", "react-dom", "@tanstack/react-router", "@tanstack/react-start"],
   },
+  ssr: {
+    noExternal: true,
+  },
   server: {
     host: "::",
     port: 8080,
