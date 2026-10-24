@@ -8,9 +8,7 @@ export default defineConfig(({ command }) => ({
     tsconfigPaths: true,
     dedupe: ["react", "react-dom", "@tanstack/react-router", "@tanstack/react-start"],
   },
-  ssr: {
-    noExternal: command === "build" ? true : undefined,
-  },
+  ssr: command === "build" ? { noExternal: true } : {},
   server: {
     host: "::",
     port: 8080,
