@@ -1,5 +1,6 @@
 import { cp, mkdir, rm, stat, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const root = process.cwd();
 const clientDir = resolve(root, "dist", "client");
@@ -39,7 +40,42 @@ async function copyClientTo(targetDir, { clean }) {
   await cp(clientDir, targetDir, { recursive: true, force: true });
 }
 
+// Render every page in-process (no temporary HTTP server), so hosting build
+// environments that block local ports can still produce static HTML.
+const PAGES = [
+  "/",
+  "/tickets",
+  "/shop",
+  "/blog",
+  "/contacts",
+  "/faq",
+  "/legal-notice",
+  "/privacy-policy",
+  "/refund-policy",
+];
+
+async function prerenderPages() {
+  const serverEntry = resolve(root, "dist", "server", "server.js");
+  await assertFile(serverEntry);
+  const mod = await import(pathToFileURL(serverEntry).href);
+  const handler = mod.default ?? mod;
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+
+  for (const page of PAGES) {
+    const response = await handler.fetch(new Request(`http://localhost${page}`), {}, ctx);
+    const html = await response.text();
+    if (response.status !== 200 || !html.includes("<html")) {
+      throw new Error(`Prerender failed for ${page}: HTTP ${response.status}`);
+    }
+    const dir = page === "/" ? clientDir : join(clientDir, page.slice(1));
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, "index.html"), html);
+    console.log(`Prerendered ${page}`);
+  }
+}
+
 await assertDirectory(clientDir);
+await prerenderPages();
 await assertFile(join(clientDir, "index.html"));
 
 await copyClientTo(outputPublicDir, { clean: true });
