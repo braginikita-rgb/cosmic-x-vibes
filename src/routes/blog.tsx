@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useDataText, useI18n } from "@/lib/i18n";
 import { upcoming } from "@/data/shows";
-import poster from "@/assets/the-limba-postponement.webp.asset.json";
-import smallPoster from "@/assets/the-limba-postponement-400.webp.asset.json";
+const poster = { url: "/media/the-limba-postponement.webp" };
+const smallPoster = { url: "/media/the-limba-postponement-400.webp" };
 
 export const Route = createFileRoute("/blog")({
   head: () => ({

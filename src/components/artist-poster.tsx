@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { upcoming } from "@/data/shows";
 import { useDataText, useI18n } from "@/lib/i18n";
-import poster from "@/assets/the-limba-postponement.webp.asset.json";
-import smallPoster from "@/assets/the-limba-postponement-400.webp.asset.json";
+const poster = { url: "/media/the-limba-postponement.webp" };
+const smallPoster = { url: "/media/the-limba-postponement-400.webp" };
 
 export function ArtistPoster() {
   const { t } = useI18n();
