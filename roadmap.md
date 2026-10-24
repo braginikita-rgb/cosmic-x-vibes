@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Fix repeated publication connection failure and verify all nine routes through TanStack's temporary preview-server startup path
+
 - [x] Correct SSR dependency bundling and verify the publication error
 
 - [x] Update tour poster and April dates/venues everywhere
