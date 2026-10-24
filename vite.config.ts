@@ -27,7 +27,7 @@ export default defineConfig(({ command }) => ({
         { path: "/contacts" },
       ],
       prerender: {
-        enabled: true,
+        enabled: false,
         crawlLinks: false,
         failOnError: true,
       },

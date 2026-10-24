@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Replace network-based prerender with in-process page rendering for the external hosting build
+
 - [x] Fix repeated publication connection failure and verify all nine routes through TanStack's temporary preview-server startup path
 
 - [x] Correct SSR dependency bundling and verify the publication error
