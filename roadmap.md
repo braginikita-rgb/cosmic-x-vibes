@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Fix repeated publication connection failure and verify the publication path
+
 - [x] Correct SSR dependency bundling and verify the publication error
 
 - [x] Update tour poster and April dates/venues everywhere

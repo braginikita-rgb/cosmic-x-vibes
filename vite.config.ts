@@ -13,6 +13,9 @@ export default defineConfig(({ command }) => ({
     host: "::",
     port: 8080,
   },
+  preview: {
+    host: "127.0.0.1",
+  },
   plugins: [
     tailwindcss(),
     tanstackStart({
