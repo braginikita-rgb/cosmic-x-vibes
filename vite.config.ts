@@ -3,11 +3,12 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   resolve: {
     tsconfigPaths: true,
     dedupe: ["react", "react-dom", "@tanstack/react-router", "@tanstack/react-start"],
   },
+  ssr: command === "build" ? { noExternal: true } : {},
   server: {
     host: "::",
     port: 8080,
@@ -46,4 +47,4 @@ export default defineConfig({
       .filter(([key]) => key.startsWith("VITE_"))
       .map(([key, value]) => [`import.meta.env.${key}`, JSON.stringify(value)]),
   ),
-});
+}));
