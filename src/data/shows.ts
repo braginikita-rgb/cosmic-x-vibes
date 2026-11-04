@@ -115,7 +115,7 @@ export const upcoming: Show[] = ([
     artist: "instasamka",
     title: "INSTASAMKA",
     city: "Барселона",
-    venue: "SALA",
+    venue: "SALA BIKINI",
     address: "Avinguda Diagonal 547, 08021 Barcelona, Spain",
     ticketUrl: "https://music.sphere.art/music/concerts/instasamka-2027-barcelona-248341",
   },
