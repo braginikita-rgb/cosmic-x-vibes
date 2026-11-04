@@ -3,16 +3,17 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useDataText, useI18n } from "@/lib/i18n";
-import { upcoming } from "@/data/shows";
+import { showsByArtist } from "@/data/shows";
+const upcoming = showsByArtist("the-limba");
 const poster = { url: "/media/the-limba-postponement.webp" };
 const smallPoster = { url: "/media/the-limba-postponement-400.webp" };
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "The Limba — перенос концертов на апрель 2027 | xXx Sound" },
-      { name: "description", content: "Концерты The Limba перенесены по техническим причинам на 23–28 апреля 2027. Варшава, Прага OX CLUB, Рига FIRST CLUB и Кишинёв." },
-      { property: "og:title", content: "The Limba — новые даты концертов в апреле 2027" },
+      { title: "Блог xXx Sound — INSTASAMKA World Tour 2027 и The Limba" },
+      { name: "description", content: "INSTASAMKA World Tour 2027: Тбилиси, Батуми, Ереван, Барселона, Франкфурт, Вена, Будапешт. Концерты The Limba перенесены по техническим причинам на 23–28 апреля 2027. Варшава, Прага OX CLUB, Рига FIRST CLUB и Кишинёв." },
+      { property: "og:title", content: "INSTASAMKA World Tour 2027 и новости The Limba — xXx Sound" },
       { property: "og:description", content: "Приносим извинения за доставленные неудобства. Новое расписание: Варшава 23 апреля, Прага 24 апреля, Рига 25 апреля, Кишинёв 28 апреля." },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -59,15 +60,17 @@ function Blog() {
   const copy = labels[lang];
 
   return (
-    <article className="overflow-hidden bg-background">
+    <>
+    <InstasamkaPost />
+    <article className="overflow-hidden border-t-2 border-foreground bg-background">
       <header className="mx-auto max-w-7xl px-5 pb-12 pt-12 sm:pb-16 sm:pt-20">
         <div className="flex flex-wrap items-center justify-between gap-3 border-y border-foreground py-3 font-mono text-[10px] font-bold uppercase tracking-[0.25em]">
           <span className="text-accent">{copy.section} / 001</span>
           <time dateTime="2026-10-18">{copy.date}</time>
         </div>
-        <h1 className="mt-9 max-w-5xl text-4xl leading-tight sm:text-6xl lg:text-7xl">
+        <h2 className="mt-9 max-w-5xl text-4xl leading-tight sm:text-6xl lg:text-7xl">
           {copy.title}<br /><span className="text-accent">{copy.headline}</span>
-        </h1>
+        </h2>
         <p className="mt-6 max-w-3xl text-xl leading-relaxed sm:text-2xl">{copy.lead}</p>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">{copy.apology}</p>
       </header>
@@ -119,7 +122,104 @@ function Blog() {
               <ChevronDown className={`transition-transform motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`} />
             </Button>
             <Button asChild className="h-auto rounded-none bg-accent px-6 py-4 font-mono text-xs font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-none hover:bg-accent/90">
-              <Link to="/tickets">{copy.tickets}</Link>
+              <Link to="/tickets" search={{ artist: "the-limba" }}>{copy.tickets}</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </article>
+    </>
+  );
+}
+
+const insta = {
+  ru: {
+    section: "Новости",
+    date: "4 ноября 2026",
+    headline: "World Tour 2027",
+    lead: "INSTASAMKA отправляется в мировой тур! Семь городов, февраль — март 2027 года.",
+    text: "Одна из самых ярких и обсуждаемых артисток представит свою концертную программу. Главные хиты, новые треки, узнаваемая подача и эффектные образы — всё, за что слушатели любят INSTASAMKA. «За деньги да», «Отключаю телефон», «Lipsi Ha» — любимые песни и атмосфера большого сольного концерта.",
+    dates: "Даты · Февраль — март 2027",
+    read: "Смотреть остальное",
+    close: "Свернуть",
+    tickets: "Билеты INSTASAMKA",
+  },
+  en: {
+    section: "News",
+    date: "November 4, 2026",
+    headline: "World Tour 2027",
+    lead: "INSTASAMKA is heading on a world tour! Seven cities, February — March 2027.",
+    text: "One of the most talked-about artists brings her live show: the biggest hits, new tracks, her signature delivery and striking looks — everything fans love about INSTASAMKA. \"Za dengi da\", \"Otklyuchayu telefon\", \"Lipsi Ha\" — favourite songs and the atmosphere of a big solo concert.",
+    dates: "Dates · February — March 2027",
+    read: "Read more",
+    close: "Show less",
+    tickets: "INSTASAMKA tickets",
+  },
+} as const;
+
+function InstasamkaPost() {
+  const [expanded, setExpanded] = useState(false);
+  const { lang } = useI18n();
+  const d = useDataText();
+  const copy = insta[lang];
+  const shows = showsByArtist("instasamka");
+
+  return (
+    <article className="overflow-hidden bg-background">
+      <header className="mx-auto max-w-7xl px-5 pb-12 pt-12 sm:pb-16 sm:pt-20">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-y border-foreground py-3 font-mono text-[10px] font-bold uppercase tracking-[0.25em]">
+          <span className="text-accent">{copy.section} / 002</span>
+          <time dateTime="2026-11-04">{copy.date}</time>
+        </div>
+        <h1 className="mt-9 max-w-5xl text-4xl leading-tight sm:text-6xl lg:text-7xl">
+          INSTASAMKA<br /><span className="text-accent">{copy.headline}</span>
+        </h1>
+        <p className="mt-6 max-w-3xl text-xl leading-relaxed sm:text-2xl">{copy.lead}</p>
+      </header>
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-16">
+        <figure className="self-start">
+          <img
+            src="/media/instasamka-2027.webp"
+            srcSet="/media/instasamka-2027-400.webp 400w, /media/instasamka-2027.webp 768w"
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            alt="INSTASAMKA — World Tour 2027"
+            width={768}
+            height={1024}
+            fetchPriority="high"
+            decoding="async"
+            className="h-auto w-full"
+          />
+        </figure>
+        <div>
+          <h2 className="border-b border-foreground pb-5 text-2xl sm:text-3xl">{copy.dates}</h2>
+          <dl className="divide-y divide-border">
+            {shows.map((show) => (
+              <div key={show.id} className="grid grid-cols-[5rem_minmax(0,1fr)] gap-4 py-5 sm:grid-cols-[6rem_minmax(0,1fr)]">
+                <dt className="font-display text-2xl text-accent sm:text-3xl">{show.date}</dt>
+                <dd>
+                  <p className="font-display text-xl uppercase">{d.city(show.city)}</p>
+                  <p className="mt-1 text-lg font-semibold">{show.venue}</p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <div id="instasamka-article" hidden={!expanded} className="border-t border-border pt-6 text-lg leading-relaxed text-muted-foreground">
+            <p>{copy.text}</p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              aria-controls="instasamka-article"
+              variant="outline"
+              className="h-auto rounded-none px-6 py-4 font-mono text-xs font-bold uppercase tracking-[0.22em] shadow-none"
+            >
+              {expanded ? copy.close : copy.read}
+              <ChevronDown className={`transition-transform motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`} />
+            </Button>
+            <Button asChild className="h-auto rounded-none bg-accent px-6 py-4 font-mono text-xs font-bold uppercase tracking-[0.22em] text-accent-foreground shadow-none hover:bg-accent/90">
+              <Link to="/tickets" search={{ artist: "instasamka" }}>{copy.tickets}</Link>
             </Button>
           </div>
         </div>

@@ -22,3 +22,19 @@ describe("The Limba April reschedule", () => {
     assert.equal(upcoming.find((show) => show.city === "Рига")?.venue, "FIRST CLUB");
   });
 });
+describe("INSTASAMKA World Tour 2027", () => {
+  const insta = upcoming.filter((s) => s.artist === "instasamka");
+  test("has seven shows", () => assert.equal(insta.length, 7));
+  test("Tbilisi is Feb 24 at Mtatsminda Hall", () => {
+    const s = insta.find((x) => x.city === "Тбилиси");
+    assert.equal(s?.date, "24.02");
+    assert.equal(s?.venue, "Mtatsminda Hall");
+  });
+  test("Budapest is Mar 18 at Dürer Kert", () => {
+    assert.equal(insta.find((x) => x.city === "Будапешт")?.date, "18.03");
+  });
+  test("shows are sorted chronologically across months", () => {
+    assert.equal(upcoming[0]?.city, "Тбилиси");
+    assert.equal(upcoming.at(-1)?.city, "Кишинев");
+  });
+});
