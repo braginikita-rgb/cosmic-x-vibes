@@ -34,6 +34,8 @@ function Index() {
     <>
       <h1 className="sr-only">xXx Sound — концертная организация</h1>
       <HeroStage />
+      <ArtistPoster artist="instasamka" id="instasamka" />
+      <div className="h-px bg-background/20" />
       <ArtistPoster />
       <PresaleMerch compact />
     </>
