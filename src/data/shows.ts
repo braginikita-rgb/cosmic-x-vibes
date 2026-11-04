@@ -158,7 +158,7 @@ export const upcoming: Show[] = ([
 ] as Show[]).sort((a, b) => sortKey(a) - sortKey(b));
 
 function sortKey(show: Show) {
-  const [day, month] = show.date.split(".").map(Number);
+  const [day = 0, month = 0] = show.date.split(".").map(Number);
   return show.year * 10000 + month * 100 + day;
 }
 

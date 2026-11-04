@@ -34,7 +34,7 @@ describe("INSTASAMKA World Tour 2027", () => {
     assert.equal(insta.find((x) => x.city === "Будапешт")?.date, "18.03");
   });
   test("shows are sorted chronologically across months", () => {
-    assert.equal(upcoming[0].city, "Тбилиси");
+    assert.equal(upcoming[0]?.city, "Тбилиси");
     assert.equal(upcoming.at(-1)?.city, "Кишинев");
   });
 });

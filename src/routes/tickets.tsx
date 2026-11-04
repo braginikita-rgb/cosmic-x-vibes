@@ -6,7 +6,7 @@ const artistIds = artists.map((a) => a.id);
 
 export const Route = createFileRoute("/tickets")({
   validateSearch: (search: Record<string, unknown>): { artist?: ArtistId } => {
-    const artist = search.artist as ArtistId;
+    const artist = search["artist"] as ArtistId;
     return artistIds.includes(artist) ? { artist } : {};
   },
   head: () => ({
