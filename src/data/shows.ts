@@ -165,6 +165,7 @@ export const upcoming: Show[] = ([
     city: "Амстердам",
     venue: "Club Panama",
     address: "",
+    ticketUrl: "https://www.impreza.events/instasamka",
   },
   {
     id: "13",
@@ -176,6 +177,7 @@ export const upcoming: Show[] = ([
     city: "Кёльн",
     venue: "BOGEN 2",
     address: "",
+    ticketUrl: "https://www.impreza.events/instasamka",
   },
   {
     id: "14",
@@ -187,6 +189,7 @@ export const upcoming: Show[] = ([
     city: "Прага",
     venue: "OX Club",
     address: "",
+    ticketUrl: "https://www.impreza.events/instasamka",
   },
   {
     id: "15",
@@ -198,6 +201,7 @@ export const upcoming: Show[] = ([
     city: "Варшава",
     venue: "Oczki Club",
     address: "",
+    ticketUrl: "https://www.impreza.events/instasamka",
   },
   {
     id: "16",
@@ -209,6 +213,7 @@ export const upcoming: Show[] = ([
     city: "Берлин",
     venue: "Säälchen",
     address: "",
+    ticketUrl: "https://www.impreza.events/instasamka",
   },
   {
     id: "17",
@@ -220,6 +225,7 @@ export const upcoming: Show[] = ([
     city: "Кишинев",
     venue: "Skal Club",
     address: "",
+    ticketUrl: "https://www.impreza.events/instasamka",
   },
 ] as Show[]).sort((a, b) => sortKey(a) - sortKey(b));
 
