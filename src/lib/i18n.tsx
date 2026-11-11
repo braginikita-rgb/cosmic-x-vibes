@@ -138,6 +138,9 @@ const dict = {
     "city.Тбилиси": "Тбилиси",
     "city.Батуми": "Батуми",
     "city.Ереван": "Ереван",
+    "city.Амстердам": "Амстердам",
+    "city.Кёльн": "Кёльн",
+    "city.Берлин": "Берлин",
 
     "day.СБ": "СБ",
     "day.ВС": "ВС",
@@ -145,6 +148,7 @@ const dict = {
     "day.ПТ": "ПТ",
     "day.ЧТ": "ЧТ",
     "day.ПН": "ПН",
+    "day.ВТ": "ВТ",
 
     "price.from": "от",
   },
@@ -275,6 +279,9 @@ const dict = {
     "city.Тбилиси": "Tbilisi",
     "city.Батуми": "Batumi",
     "city.Ереван": "Yerevan",
+    "city.Амстердам": "Amsterdam",
+    "city.Кёльн": "Cologne",
+    "city.Берлин": "Berlin",
 
     "day.СБ": "SAT",
     "day.ВС": "SUN",
@@ -282,6 +289,7 @@ const dict = {
     "day.ПТ": "FRI",
     "day.ЧТ": "THU",
     "day.ПН": "MON",
+    "day.ВТ": "TUE",
 
     "price.from": "from",
   },
