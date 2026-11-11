@@ -15,7 +15,7 @@ export const Route = createFileRoute("/tickets")({
       {
         name: "description",
         content:
-          "Билеты на INSTASAMKA World Tour 2027 (Тбилиси, Батуми, Ереван, Барселона, Франкфурт, Вена, Будапешт) и The Limba в апреле 2027.",
+          "Билеты на INSTASAMKA World Tour 2027 (Тбилиси, Батуми, Ереван, Барселона, Франкфурт, Амстердам, Кёльн, Вена, Прага, Варшава, Берлин, Будапешт, Кишинёв) и The Limba в апреле 2027.",
       },
       { property: "og:title", content: "Билеты на концерты — xXx Sound" },
       {
@@ -77,14 +77,9 @@ function Tickets() {
               </p>
             </div>
             <ul>
-              {shows.map((show) => (
-                <li key={show.id}>
-                  <a
-                    href={show.ticketUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 transition-colors hover:bg-accent/5 sm:grid-cols-[120px_1fr_auto] sm:items-center"
-                  >
+              {shows.map((show) => {
+                const row = (
+                  <>
                     <span>
                       <span className="block font-display text-3xl">{show.date}</span>
                       <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -97,12 +92,39 @@ function Tickets() {
                       <p className="text-sm font-semibold uppercase">{show.venue}</p>
                       {show.address && <p className="mt-1 text-sm text-muted-foreground">{show.address}</p>}
                     </div>
-                    <span className="bar-label col-span-2 w-full bg-accent text-center text-[10px] text-accent-foreground sm:col-span-1 sm:w-auto">
-                      {t("tickets.buy")}
-                    </span>
-                  </a>
-                </li>
-              ))}
+                  </>
+                );
+                const cta = show.ticketUrl ? (
+                  <span className="bar-label col-span-2 w-full bg-accent text-center text-[10px] text-accent-foreground sm:col-span-1 sm:w-auto">
+                    {t("tickets.buy")}
+                  </span>
+                ) : (
+                  <span className="col-span-2 w-full border border-border py-2 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:col-span-1 sm:w-auto">
+                    {t("tickets.soon")}
+                  </span>
+                );
+
+                return (
+                  <li key={show.id}>
+                    {show.ticketUrl ? (
+                      <a
+                        href={show.ticketUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 transition-colors hover:bg-accent/5 sm:grid-cols-[120px_1fr_auto] sm:items-center"
+                      >
+                        {row}
+                        {cta}
+                      </a>
+                    ) : (
+                      <div className="grid grid-cols-[auto_1fr] items-start gap-5 border-b border-border py-7 sm:grid-cols-[120px_1fr_auto] sm:items-center">
+                        {row}
+                        {cta}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         );

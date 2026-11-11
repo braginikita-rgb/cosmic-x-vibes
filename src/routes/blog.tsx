@@ -12,7 +12,7 @@ export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
       { title: "Блог xXx Sound — INSTASAMKA World Tour 2027 и The Limba" },
-      { name: "description", content: "INSTASAMKA World Tour 2027: Тбилиси, Батуми, Ереван, Барселона, Франкфурт, Вена, Будапешт. Концерты The Limba перенесены по техническим причинам на 23–28 апреля 2027. Варшава, Прага OX CLUB, Рига FIRST CLUB и Кишинёв." },
+      { name: "description", content: "INSTASAMKA World Tour 2027: Тбилиси, Батуми, Ереван, Барселона, Франкфурт, Амстердам, Кёльн, Вена, Прага, Варшава, Берлин, Будапешт, Кишинёв. Концерты The Limba перенесены по техническим причинам на 23–28 апреля 2027. Варшава, Прага OX CLUB, Рига FIRST CLUB и Кишинёв." },
       { property: "og:title", content: "INSTASAMKA World Tour 2027 и новости The Limba — xXx Sound" },
       { property: "og:description", content: "Приносим извинения за доставленные неудобства. Новое расписание: Варшава 23 апреля, Прага 24 апреля, Рига 25 апреля, Кишинёв 28 апреля." },
       { property: "og:type", content: "article" },
@@ -137,7 +137,7 @@ const insta = {
     section: "Новости",
     date: "4 ноября 2026",
     headline: "World Tour 2027",
-    lead: "INSTASAMKA отправляется в мировой тур! Семь городов, февраль — март 2027 года.",
+    lead: "INSTASAMKA отправляется в мировой тур! Тринадцать городов, февраль — март 2027 года.",
     text: "Одна из самых ярких и обсуждаемых артисток представит свою концертную программу. Главные хиты, новые треки, узнаваемая подача и эффектные образы — всё, за что слушатели любят INSTASAMKA. «За деньги да», «Отключаю телефон», «Lipsi Ha» — любимые песни и атмосфера большого сольного концерта.",
     dates: "Даты · Февраль — март 2027",
     read: "Смотреть остальное",
@@ -148,7 +148,7 @@ const insta = {
     section: "News",
     date: "November 4, 2026",
     headline: "World Tour 2027",
-    lead: "INSTASAMKA is heading on a world tour! Seven cities, February — March 2027.",
+    lead: "INSTASAMKA is heading on a world tour! Thirteen cities, February — March 2027.",
     text: "One of the most talked-about artists brings her live show: the biggest hits, new tracks, her signature delivery and striking looks — everything fans love about INSTASAMKA. \"Za dengi da\", \"Otklyuchayu telefon\", \"Lipsi Ha\" — favourite songs and the atmosphere of a big solo concert.",
     dates: "Dates · February — March 2027",
     read: "Read more",
