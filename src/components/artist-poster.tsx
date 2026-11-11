@@ -74,7 +74,7 @@ export function ArtistPoster({ artist = "the-limba", id = "tour" }: { artist?: A
                         {d.city(show.city)}
                       </p>
                       <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-background/60">
-                        {show.venue} · {show.address}
+                        {show.address ? `${show.venue} · ${show.address}` : show.venue}
                       </p>
                     </div>
                     <span className="font-display text-2xl leading-none sm:text-3xl">{show.date}</span>

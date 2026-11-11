@@ -98,6 +98,7 @@ const dict = {
     "tickets.season": "Апрель 2027",
     "tickets.all": "Все даты",
     "tickets.buy": "Купить",
+    "tickets.soon": "Скоро",
 
     "shop.title": "Coming soon",
     "shop.text":
@@ -239,6 +240,7 @@ const dict = {
     "tickets.season": "April 2027",
     "tickets.all": "All dates",
     "tickets.buy": "Buy",
+    "tickets.soon": "Soon",
 
     "shop.title": "Coming soon",
     "shop.text":
