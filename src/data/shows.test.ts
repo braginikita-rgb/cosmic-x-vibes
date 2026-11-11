@@ -64,8 +64,10 @@ describe("INSTASAMKA World Tour 2027", () => {
     assert.equal(s?.date, "20.03");
     assert.equal(s?.venue, "Skal Club");
   });
-  test("new shows have no ticket link yet", () => {
-    assert.equal(insta.find((x) => x.city === "Берлин")?.ticketUrl, undefined);
+  test("new shows all point to the impreza sales page", () => {
+    for (const city of ["Амстердам", "Кёльн", "Прага", "Варшава", "Берлин", "Кишинев"]) {
+      assert.equal(insta.find((x) => x.city === city)?.ticketUrl, "https://www.impreza.events/instasamka");
+    }
   });
   test("shows are sorted chronologically across months", () => {
     assert.equal(upcoming[0]?.city, "Тбилиси");
